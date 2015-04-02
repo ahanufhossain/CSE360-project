@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class LoginScreenPanel extends JPanel {
-	private JTextField loginField;
+	private JTextField fieldUsername;
 	private JPasswordField passwordField;
 
 	/**
@@ -36,10 +36,11 @@ public class LoginScreenPanel extends JPanel {
 		lblUsername.setBounds(137, 148, 73, 19);
 		add(lblUsername);
 		
-		loginField = new JTextField();
-		loginField.setBounds(229, 149, 73, 18);
-		add(loginField);
-		loginField.setColumns(10);
+		fieldUsername = new JTextField();
+		fieldUsername.setToolTipText("10 Characters or less, no special characters.");
+		fieldUsername.setBounds(229, 149, 73, 18);
+		add(fieldUsername);
+		fieldUsername.setColumns(10);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(229, 196, 73, 17);
