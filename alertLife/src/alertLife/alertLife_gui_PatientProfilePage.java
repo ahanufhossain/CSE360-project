@@ -18,7 +18,7 @@ public class alertLife_gui_PatientProfilePage {
 
 	/**
 	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -30,7 +30,7 @@ public class alertLife_gui_PatientProfilePage {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the application.
