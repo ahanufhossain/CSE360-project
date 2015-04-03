@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 public class DoctorProfilePanel extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * Create the fgfdgpanel.
 	 */
 	public DoctorProfilePanel() {
 		setLayout(null);
