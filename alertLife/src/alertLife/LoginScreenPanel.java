@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 public class LoginScreenPanel extends JPanel {
 	private JTextField fieldUsername;
 	private JPasswordField passwordField;
+	JButton btnLogin;
 
 	/**
 	 * Create the panel.
@@ -46,7 +47,7 @@ public class LoginScreenPanel extends JPanel {
 		passwordField.setBounds(229, 196, 73, 17);
 		add(passwordField);
 		
-		JButton btnLogin = new JButton("Login");
+		btnLogin = new JButton("Login");
 		btnLogin.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnLogin.setBounds(165, 239, 119, 26);
 		add(btnLogin);
