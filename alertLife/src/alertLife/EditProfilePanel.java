@@ -20,8 +20,8 @@ public class EditProfilePanel extends JPanel {
 	private JTextField usernameField;
 	private JTextField passwordField;
 	
-	private JButton saveButton;
-	private JButton cancelButton;
+	JButton saveButton;
+	JButton cancelButton;
 	
 	/**
 	 * Create the panel.

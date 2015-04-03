@@ -17,6 +17,7 @@ public class RegistrationPanel extends JPanel {
 	private JTextField txtYear;
 	private JTextField textField;
 	private JPasswordField passwordField;
+	JButton btnRegister;
 
 	/**
 	 * Create the panel.
@@ -108,7 +109,7 @@ public class RegistrationPanel extends JPanel {
 		rdbtnPatient.setBounds(284, 336, 85, 27);
 		add(rdbtnPatient);
 		
-		JButton btnRegister = new JButton("Register");
+		btnRegister = new JButton("Register");
 		btnRegister.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnRegister.setBounds(180, 385, 89, 23);
 		add(btnRegister);
