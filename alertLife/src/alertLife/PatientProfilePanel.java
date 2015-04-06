@@ -11,6 +11,8 @@ import javax.swing.JScrollBar;
 
 public class PatientProfilePanel extends JPanel {
 
+	JButton btnEditProfile;
+	JButton btnNewEntry;
 	/**
 	 * Create the panel.
 	 */
@@ -43,7 +45,7 @@ public class PatientProfilePanel extends JPanel {
 		lblDoctor.setBounds(246, 89, 151, 14);
 		add(lblDoctor);
 		
-		JButton btnEditProfile = new JButton("Edit Profile");
+		btnEditProfile = new JButton("Edit Profile");
 		btnEditProfile.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnEditProfile.setBounds(168, 130, 113, 23);
 		add(btnEditProfile);
@@ -75,7 +77,7 @@ public class PatientProfilePanel extends JPanel {
 		list.setBounds(264, 208, 160, 244);
 		add(list);
 		
-		JButton btnNewEntry = new JButton("New Entry");
+		btnNewEntry = new JButton("New Entry");
 		btnNewEntry.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnNewEntry.setBounds(170, 463, 110, 23);
 		add(btnNewEntry);
