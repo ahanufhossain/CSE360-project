@@ -1,3 +1,17 @@
+/***********************************************/
+//Team #3
+//Team Members: 	(First 	Last)
+//					Emily 	Berk
+//					Parker 	Derks
+//					Ahanuf 	Hossains
+//					Adam 	Lew
+//					Josh	Owens
+
+//Description: 	This class implements the Controller object, which links all of the classes together, and provides an interface between the gui
+// 				and all of the classes.
+
+/***********************************************/
+
 package alertLife;
 
 import java.awt.event.ActionEvent;

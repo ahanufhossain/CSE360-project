@@ -1,3 +1,17 @@
+/***********************************************/
+//Team #3
+//Team Members: 	(First 	Last)
+//					Emily 	Berk
+//					Parker 	Derks
+//					Ahanuf 	Hossains
+//					Adam 	Lew
+//					Josh	Owens
+
+//Description: 	This class implements the PatientProfile panel, which displays the patient informaton and allows the patient to edit their informaton
+// 				or to submit a new diagnosis entry.
+
+/***********************************************/
+
 package alertLife;
 
 import javax.swing.JPanel;

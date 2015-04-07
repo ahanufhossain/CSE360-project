@@ -1,3 +1,16 @@
+/***********************************************/
+//Team #3
+//Team Members: 	(First 	Last)
+//					Emily 	Berk
+//					Parker 	Derks
+//					Ahanuf 	Hossains
+//					Adam 	Lew
+//					Josh	Owens
+
+//Description: 	This class implements the NewEntry panel which allows the patient to submit a new diagnosis.
+
+/***********************************************/
+
 package alertLife;
 
 import javax.swing.JPanel;

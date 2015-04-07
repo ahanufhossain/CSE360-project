@@ -1,3 +1,16 @@
+/***********************************************/
+//Team #3
+//Team Members: 	(First 	Last)
+//					Emily 	Berk
+//					Parker 	Derks
+//					Ahanuf 	Hossains
+//					Adam 	Lew
+//					Josh	Owens
+
+//Description: 	This class implements the Registration Panel, which is used to allow a first time user to input their initial informaton.
+
+/***********************************************/
+
 package alertLife;
 
 import javax.swing.JPanel;

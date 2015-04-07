@@ -1,3 +1,16 @@
+/***********************************************/
+//Team #3
+//Team Members: 	(First 	Last)
+//					Emily 	Berk
+//					Parker 	Derks
+//					Ahanuf 	Hossains
+//					Adam 	Lew
+//					Josh	Owens
+
+//Description: 	This class implements the DoctorProfilePage panel, which allows the doctor to select a patient, add a patient, or change their information.
+
+/***********************************************/
+
 package alertLife;
 
 import javax.swing.JList;

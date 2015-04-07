@@ -1,3 +1,15 @@
+/***********************************************/
+//Team #3
+//Team Members: 	(First 	Last)
+//					Emily 	Berk
+//					Parker 	Derks
+//					Ahanuf 	Hossains
+//					Adam 	Lew
+//					Josh	Owens
+
+//Description: 	This class implements the addPatient panel, which allows a doctor to add a patient to their patient array list.
+
+/***********************************************/
 package alertLife;
 import javax.swing.JPanel;
 import javax.swing.JLabel;

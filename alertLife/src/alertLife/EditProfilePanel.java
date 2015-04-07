@@ -1,3 +1,16 @@
+/***********************************************/
+//Team #3
+//Team Members: 	(First 	Last)
+//					Emily 	Berk
+//					Parker 	Derks
+//					Ahanuf 	Hossains
+//					Adam 	Lew
+//					Josh	Owens
+
+//Description: 	This class implements the EditProfile panel, which lets a user modify their name, date of birth, username, and password.
+
+/***********************************************/
+
 package alertLife;
 
 import javax.swing.JPanel;
