@@ -9,19 +9,19 @@ import java.awt.Color;
 
 public class EditProfilePanel extends JPanel {
 	
-	private JLabel titleLabel;
-	private JLabel nameLabel;
-	private JLabel dobLabel;
-	private JLabel usernameLabel;
-	private JLabel passwordLabel;
+	public JLabel titleLabel;
+	public JLabel nameLabel;
+	public JLabel dobLabel;
+	public JLabel usernameLabel;
+	public JLabel passwordLabel;
 	
-	private JTextField nameField;
-	private JTextField dobField;
-	private JTextField usernameField;
-	private JTextField passwordField;
+	public JTextField nameField;
+	public JTextField dobField;
+	public JTextField usernameField;
+	public JTextField passwordField;
 	
-	JButton saveButton;
-	JButton cancelButton;
+	public JButton saveButton;
+	public JButton cancelButton;
 	
 	/**
 	 * Create the panel.
