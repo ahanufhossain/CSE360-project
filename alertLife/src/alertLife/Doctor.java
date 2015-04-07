@@ -1,3 +1,16 @@
+/***********************************************/
+//Team #3
+//Team Members: 	(First 	Last)
+//					Emily 	Berk
+//					Parker 	Derks
+//					Ahanuf 	Hossains
+//					Adam 	Lew
+//					Josh	Owens
+
+//Description: 	This class implements the Doctor class object.
+
+/***********************************************/
+
 package alertLife;
 
 import java.util.ArrayList;
