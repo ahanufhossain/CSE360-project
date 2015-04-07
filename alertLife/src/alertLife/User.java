@@ -13,10 +13,32 @@
 package alertLife;
 
 public class User {
-private String username;
-private String password;
-private String dateOfBirth;
-private String name;
+protected String username;
+protected String password;
+protected String dateOfBirth;
+protected String name;
+public  String userType = "Patient";
+
+/***********************Constructors******************************************/
+//Methods: User(), and User(String uName, String pw, String initDOB, String initName) 
+//Description: Constructors for the User object.
+/*****************************************************************************/
+
+public User()
+{
+	username = null; 
+	password = null;
+	dateOfBirth = null;
+	name = null;
+}
+public User(String uName, String pw, String initDOB, String initName)
+{
+	username = uName;
+	password = pw;
+	dateOfBirth = initDOB;
+	name = initName;
+}
+
 
 /***********************Username Getter and Setters***************************/
 //Methods: getUsername(), setUsername()
@@ -44,4 +66,31 @@ public void setPassword(String iPassword)
 	password = iPassword;
 }
 
+/***********************Date of Birth Getter and Setters***************************/
+//Methods: getDOB(), setDOB()
+//Description: Returns or modifies the dateOfBirth string of the current User object.
+/*****************************************************************************/
+public String getDOB()
+{
+	return dateOfBirth;
 }
+public void setDOB(String iDOB)
+{
+	dateOfBirth = iDOB;
+}
+
+/***********************name Getter and Setters***************************/
+//Methods: getName(), setName()
+//Description: Returns or modifies the name string of the current User object.
+/*****************************************************************************/
+public String getName()
+{
+	return name;
+}
+public void setName(String iName)
+{
+	name = iName;
+}
+
+
+}//close class

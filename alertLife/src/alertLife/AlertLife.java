@@ -14,7 +14,9 @@
 package alertLife;
 
 public class AlertLife {
-
+	
+	static final int debugModeOn = 0; 
+	
 	public static void main(String[] args)
 	{
 		Controller control = new Controller();
