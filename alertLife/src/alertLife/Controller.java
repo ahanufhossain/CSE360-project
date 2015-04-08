@@ -16,6 +16,13 @@ package alertLife;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -30,12 +37,17 @@ public class Controller extends JFrame implements ActionListener
 	RegistrationPanel registerPage;
 	addPatientPanel addPatientPage;
 	JFrame frame;
-	//we will need an arrayList that has all of the users and
-	//a current User object so the current user can be modified
+	ArrayList<User> listOfUsers;
+	User currentUser;
 
 	
 	public void init()
 	{
+		//initialize arrayList and currentUser
+		currentUser = new User();
+		listOfUsers = new ArrayList<User>();
+		load();
+		
 		//initialize all JPanels
 		login = new LoginScreenPanel();
 		docPage = new DoctorProfilePanel();
@@ -70,6 +82,44 @@ public class Controller extends JFrame implements ActionListener
 	public void updateAll()
 	{
 		
+	}
+	
+	//writes the arrayList of users to a file
+	public void save()
+	{
+		try{
+			FileOutputStream fileOut = new FileOutputStream("allUsers");
+			ObjectOutputStream outputStream = new ObjectOutputStream(fileOut);
+			outputStream.writeObject(listOfUsers);
+            outputStream.close();
+            fileOut.close();
+        }
+		catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } 
+		catch (IOException ex) {
+            ex.printStackTrace();
+		}
+	}
+	
+	//loads the arrayList of users from a file
+	public void load()
+	{
+		try{
+			FileInputStream fileIn = new FileInputStream("allUsers");
+			ObjectInputStream inputStream = new ObjectInputStream(fileIn);
+			listOfUsers = (ArrayList<User>) inputStream.readObject();
+			inputStream.close();
+			fileIn.close();
+        }
+		catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } 
+		catch (IOException ex) {
+            ex.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	//this method is the action listener for all of the buttons in the application
