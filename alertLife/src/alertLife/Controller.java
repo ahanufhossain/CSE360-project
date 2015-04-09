@@ -71,10 +71,11 @@ public class Controller extends JFrame implements ActionListener
 		newEntryPage.entryButton.addActionListener(this);
 		
 		frame = new JFrame();
-		frame.setSize(450, 450);
+		frame.setSize(450,500);
 		frame.getContentPane().add(login);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
 		
 	}
 	
