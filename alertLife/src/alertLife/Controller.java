@@ -74,6 +74,7 @@ public class Controller extends JFrame implements ActionListener
 		frame.setSize(450, 450);
 		frame.getContentPane().add(login);
 		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
 	
