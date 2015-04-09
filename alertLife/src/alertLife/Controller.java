@@ -75,7 +75,6 @@ public class Controller extends JFrame implements ActionListener
 		frame.getContentPane().add(login);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 	}
 	
 	//the purpose of this method will be to update the information
