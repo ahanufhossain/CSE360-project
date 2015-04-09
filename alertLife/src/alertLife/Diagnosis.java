@@ -22,6 +22,28 @@ public class Diagnosis {
 	private String comment;
 	private String doctor;
 	
+	public Diagnosis()
+	{
+		symptom1 = 0;
+		symptom2 = 0;
+		symptom3 = 0;
+		symptom4 = 0;
+		symptom5 = 0;
+		comment = "";
+		doctor = "";
+	}
+	
+	public Diagnosis(int symp1, int symp2, int symp3, int symp4, int symp5, String com, String doc)
+	{
+		symptom1 = symp1;
+		symptom2 = symp2;
+		symptom3 = symp3;
+		symptom4 = symp4;
+		symptom5 = symp5;
+		comment = com;
+		doctor = doc;
+	}
+	
 	public int getSymptom(int num)
 	{
 		switch (num){
