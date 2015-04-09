@@ -22,7 +22,7 @@ public class Diagnosis {
 	private String comment;
 	private String doctor;
 	
-	public int getSymptom(int num) //prototyped for the Patient object, modify comment when fully implemented
+	public int getSymptom(int num)
 	{
 		switch (num){
 		case 1 : return symptom1;
@@ -44,7 +44,7 @@ public class Diagnosis {
 		return doctor;
 	}
 	
-	public void setSymptom(int s, int value) //prototyped for the Patient object, modify comment when fully implemented
+	public void setSymptom(int s, int value)
 	{
 		switch (s)
 		{
