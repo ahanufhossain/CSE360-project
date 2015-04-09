@@ -69,19 +69,7 @@ public class EditProfilePanel extends JPanel {
 		cancelButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		
 		
-		//bounds		
-		/*titleLabel.setBounds(203, 25, 100, 20);
-		nameLabel.setBounds(200, 75, 45, 20);
-		nameField.setBounds(253, 70, 110, 30);
-		dobLabel.setBounds(207, 105, 38, 20);
-		dobField.setBounds(253, 100, 110, 30);
-		usernameLabel.setBounds(172, 135, 73, 20);
-		usernameField.setBounds(253, 130, 110, 30);
-		passwordLabel.setBounds(177, 165, 68, 20);
-		passwordField.setBounds(253, 160, 110, 30);
-		saveButton.setBounds(133, 375, 110, 20);
-		cancelButton.setBounds(263, 375, 110, 20);*/
-		
+		//bounds				
 		titleLabel.setBounds(0, 25, 450, 20);
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		nameLabel.setBounds(172, 75, 45, 20);
