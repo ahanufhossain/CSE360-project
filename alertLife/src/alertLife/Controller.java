@@ -122,6 +122,37 @@ public class Controller extends JFrame implements ActionListener
 			e.printStackTrace();
 		}
 	}
+	//used for login purposes checks if user exists and if so sets current user
+	//to user who is logged in otherwise sets it to null
+	public boolean userExists()
+	{
+		boolean flag = false;
+		
+		//iterates through arrayList
+		for(int i=0;i<listOfUsers.size();i++)
+		{
+			//checks if username is equal to the username field
+			if(listOfUsers.get(i).getUsername() == login.fieldUsername.getText())
+			{
+				//checks if password of that user is correct
+				if(listOfUsers.get(i).getPassword().toCharArray() == login.passwordField.getPassword())
+				{
+					flag = true;
+					currentUser = listOfUsers.get(i); //sets current user
+					break;
+				}
+				else
+				{
+					//display incorrect password
+				}
+			}
+			else
+			{
+				//display username does not exist
+			}
+		}
+		return flag;
+	}
 	
 	//this method is the action listener for all of the buttons in the application
 	//this method controls the entire application as nothing can happen within the
@@ -131,10 +162,13 @@ public class Controller extends JFrame implements ActionListener
 		//we will change this later to check login information and user type
 		if(e.getSource() == login.btnLogin)
 		{
-			frame.getContentPane().removeAll();
-			frame.getContentPane().add(docPage);
-			frame.setVisible(true);
-			frame.repaint();
+			if(userExists())
+			{
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(docPage);
+				frame.setVisible(true);
+				frame.repaint();
+			}
 		}
 		//brings user to the registration page
 		if(e.getSource() == login.btnRegister)

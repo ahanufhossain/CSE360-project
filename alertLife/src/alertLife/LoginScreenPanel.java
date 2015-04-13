@@ -11,8 +11,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class LoginScreenPanel extends JPanel {
-	private JTextField fieldUsername;
-	private JPasswordField passwordField;
+	JTextField fieldUsername;
+	JPasswordField passwordField;
 	JButton btnLogin;
 	JButton btnRegister;
 
