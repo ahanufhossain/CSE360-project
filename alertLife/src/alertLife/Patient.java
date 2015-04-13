@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class Patient extends User {
 
 	
-	private ArrayList<Diagnosis> diagnoses;
+	private ArrayList<Diagnosis> diagnoses = new ArrayList<Diagnosis>();
 	
 	/***********************Constructors******************************************/
 	//Methods: Patient(), and Patient(String uName, String pw, String initDOB, String initName) 
@@ -60,7 +60,15 @@ public class Patient extends User {
 		System.out.println("Diagnosis has been removed from the current list.");
 	}
 	
-	/*************************getDiagnosis()***********************************/
+	/*************************getDiagnoses()***********************************/
+	//Description: returns the array list for diagnoses. 
+	/*************************************************************************/
+	public ArrayList<Diagnosis> getDiagnoses()
+	{
+		return diagnoses;
+	}
+	
+	/*************************getDiagnosisReport()***********************************/
 	//Description: returns a string in the format: 
 	//Symptom1: x/Symptom2: x/Symptom 3: x
 	//Symptom4: x/SYmptom5: x
@@ -88,8 +96,8 @@ public class Patient extends User {
 				
 		String report;
 		report = "Pain: "; 
-		report += reported.getSymptom(1) + "/Nausea: " + reported.getSymptom(2) + "/Sleepiness: " + reported.getSymptom(3) + "/\n";
-		report += "Fatgue: " + reported.getSymptom(4) + "/Dizziness: " + reported.getSymptom(5) + "\n";
+		report += reported.getSymptom(1) + "\t\tNausea: " + reported.getSymptom(2) + "\tSleepiness: " + reported.getSymptom(3) + "\n";
+		report += "Fatgue: " + reported.getSymptom(4) + "\tDizziness: " + reported.getSymptom(5) + "\n";
 		report += "Comment: " + reported.getComment() + "\n";
 		
 		return report;

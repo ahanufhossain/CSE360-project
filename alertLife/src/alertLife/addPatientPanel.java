@@ -26,7 +26,7 @@ import javax.swing.AbstractListModel;
 
 public class addPatientPanel extends JPanel {
 	
-	public JButton btnAddPatient, btnLogOn;
+	public JButton btnAddPatient;
 	public JList patientList;
 	
 	
@@ -42,11 +42,6 @@ public class addPatientPanel extends JPanel {
 		lblPatients.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		lblPatients.setBounds(192, 11, 69, 39);
 		add(lblPatients);
-		
-		JButton btnLogOn = new JButton("Log Off");
-		btnLogOn.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
-		btnLogOn.setBounds(351, 0, 89, 23);
-		add(btnLogOn);
 		
 		JButton btnAddPatient = new JButton("Add Patient");
 		btnAddPatient.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
