@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class Doctor extends User {
 
-	private ArrayList<Patient> patients;
+	private ArrayList<Patient> patients = new ArrayList<Patient>();
 		
 	/***********************Constructors******************************************/
 	//Methods: Patient(), and Patient(String uName, String pw, String initDOB, String initName) 
@@ -58,7 +58,10 @@ public class Doctor extends User {
 			Patient tempPatient; 
 			while(temp.size() != exitCount)
 			{
-				while (count < exitCount)
+				highestPriority = 0;
+				indexOfHighest = 0;
+				count = 0;
+				while (count < patients.size())
 				{
 					if(patients.get(count).getPriority() > highestPriority)
 					{
@@ -67,8 +70,9 @@ public class Doctor extends User {
 					}
 					count++;
 				}
-				tempPatient = patients.get(indexOfHighest); //obtain lowest priority patient after search
-				temp.add(tempPatient); //add lowest priority patient to new arraylist
+				tempPatient = patients.get(indexOfHighest); //obtain highest priority patient after search
+				temp.add(tempPatient); //add highest priority patient to new arraylist
+				removePatient(tempPatient); //remove from current list
 				
 			}//close inner while
 			patients = temp; //list is sorted
@@ -81,26 +85,31 @@ public class Doctor extends User {
 		System.out.println("Patient has been added to the current list.");
 	}
 	
-	public void removeDiagnosis(Diagnosis remEntry)
+	public void removePatient(Patient remEntry)
 	{
 		if(patients.remove(remEntry) && AlertLife.debugModeOn == 1);
 		System.out.println("Patient has been removed from the current list.");
 	}
 	
+	public ArrayList<Patient> getPatientList()
+	{
+		return patients;
+	}
+	
 	public Patient getPatient(String pName)
 	{
 		Patient temp = new Patient();
-		int count = 0;
-		while(temp.getName() != pName && count < patients.size())
+		for(int i = 0; i < patients.size(); i++ )
 		{
-			if(patients.get(count).getName() == pName)
+			
+			if(patients.get(i).getName() == pName)
 			{
-				temp = patients.get(count); 
-				count = 9001;//break out of loop
+				
+				temp = patients.get(i);
+				i = 9001;
 			}
-			count++;
 		}
-		if(patients.get(patients.size()).getName() != pName && count != 9001) //if not found
+		if(temp.getName() != pName) //if not found
 			System.out.println("Patient not found");
 		return temp;
 	}
