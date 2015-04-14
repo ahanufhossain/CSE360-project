@@ -13,9 +13,10 @@
 
 package alertLife;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Doctor extends User {
+public class Doctor extends User implements Serializable {
 
 	private ArrayList<Patient> patients = new ArrayList<Patient>();
 		

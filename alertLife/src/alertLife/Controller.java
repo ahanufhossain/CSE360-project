@@ -22,7 +22,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.OptionalDataException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JFrame;
 
@@ -39,6 +41,7 @@ public class Controller extends JFrame implements ActionListener
 	JFrame frame;
 	ArrayList<User> listOfUsers;
 	User currentUser;
+	int indexOfCurrentUser; //needed to update the arraylist when users info is changed
 
 	
 	public void init()
@@ -83,7 +86,8 @@ public class Controller extends JFrame implements ActionListener
 	//across the entire application so it is consistent
 	public void updateAll()
 	{
-		
+		//updates arraylist so information for current user is accurate
+		listOfUsers.set(indexOfCurrentUser, currentUser);
 	}
 	
 	//writes the arrayList of users to a file
@@ -92,7 +96,13 @@ public class Controller extends JFrame implements ActionListener
 		try{
 			FileOutputStream fileOut = new FileOutputStream("allUsers");
 			ObjectOutputStream outputStream = new ObjectOutputStream(fileOut);
-			outputStream.writeObject(listOfUsers);
+			
+			//serializes each user individually
+			for(int i=0; i<listOfUsers.size();i++)
+			{
+				outputStream.writeObject(listOfUsers.get(i));
+			}
+			
             outputStream.close();
             fileOut.close();
         }
@@ -110,7 +120,15 @@ public class Controller extends JFrame implements ActionListener
 		try{
 			FileInputStream fileIn = new FileInputStream("allUsers");
 			ObjectInputStream inputStream = new ObjectInputStream(fileIn);
-			listOfUsers = (ArrayList<User>) inputStream.readObject();
+			
+			//loads objects until an exception is thrown
+			try {
+		        while (true) {
+		            listOfUsers.add((User) inputStream.readObject());
+		        }
+		    } catch (OptionalDataException ex) {
+		        if (!ex.eof) throw ex;
+		    } 
 			inputStream.close();
 			fileIn.close();
         }
@@ -133,13 +151,14 @@ public class Controller extends JFrame implements ActionListener
 		for(int i=0;i<listOfUsers.size();i++)
 		{
 			//checks if username is equal to the username field
-			if(listOfUsers.get(i).getUsername() == login.fieldUsername.getText())
+			if(listOfUsers.get(i).getUsername().equals(login.fieldUsername.getText()))
 			{
 				//checks if password of that user is correct
-				if(listOfUsers.get(i).getPassword().toCharArray() == login.passwordField.getPassword())
+				if(Arrays.equals(listOfUsers.get(i).getPassword().toCharArray(), login.passwordField.getPassword()))
 				{
 					flag = true;
 					currentUser = listOfUsers.get(i); //sets current user
+					indexOfCurrentUser = i; //sets index for current user
 					break;
 				}
 				else
@@ -165,10 +184,20 @@ public class Controller extends JFrame implements ActionListener
 		{
 			if(userExists())
 			{
-				frame.getContentPane().removeAll();
-				frame.getContentPane().add(docPage);
-				frame.setVisible(true);
-				frame.repaint();
+				if(currentUser.userType.equals("Doctor"))
+				{
+					frame.getContentPane().removeAll();
+					frame.getContentPane().add(docPage);
+					frame.setVisible(true);
+					frame.repaint();
+				}
+				else
+				{
+					frame.getContentPane().removeAll();
+					frame.getContentPane().add(patientPage);
+					frame.setVisible(true);
+					frame.repaint();
+				}
 			}
 		}
 		//brings user to the registration page
@@ -183,6 +212,38 @@ public class Controller extends JFrame implements ActionListener
 		//needs to create new user this will be implemented later
 		if(e.getSource() == registerPage.btnRegister)
 		{
+			//gets all values from fields for registration
+			String username = registerPage.textField.getText();
+			char[] tempPass = registerPage.passwordField.getPassword();
+			String password = new String(tempPass);
+			String name = registerPage.firstNameField.getText() + " " + registerPage.lastNameField.getText();
+			String dob = (String)registerPage.comboBoxMonth.getSelectedItem() + "/" +
+			(String)registerPage.comboBoxDay.getSelectedItem() + "/" + registerPage.txtYear.getText();
+			
+			//checks none of the fields are blank
+			if(username.equals("") || password.equals("") || name.equals("") || dob.equals(""))
+			{
+				//set label to say please fill in all information
+			}
+			else
+			{
+				//if doctor radio button selected creates new doctor
+				if(registerPage.radioButtonDoctor.isSelected())
+				{	
+					Doctor doc = new Doctor(username, password, dob, name);
+					doc.userType = "Doctor";
+					listOfUsers.add(doc);
+				}
+				//otherwise a new patient is created
+				else
+				{
+					Patient patient = new Patient(username, password, dob, name);
+					patient.userType = "Patient";
+					listOfUsers.add(patient);
+				}
+				save();
+			}
+			
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(login);
 			frame.setVisible(true);

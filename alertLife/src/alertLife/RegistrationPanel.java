@@ -14,9 +14,14 @@
 package alertLife;
 
 import javax.swing.JPanel;
+
 import java.awt.Color;
+
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -25,12 +30,16 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 
 public class RegistrationPanel extends JPanel {
-	private JTextField firstNameField;
-	private JTextField lastNameField;
-	private JTextField txtYear;
-	private JTextField textField;
-	private JPasswordField passwordField;
+	JTextField firstNameField;
+	JTextField lastNameField;
+	JTextField txtYear;
+	JTextField textField;
+	JPasswordField passwordField;
 	JButton btnRegister;
+	JRadioButton radioButtonDoctor;
+	JRadioButton rdbtnPatient;
+	JComboBox comboBoxMonth;
+	JComboBox comboBoxDay;
 
 	/**
 	 * Create the panel.
@@ -64,7 +73,7 @@ public class RegistrationPanel extends JPanel {
 		add(lastNameField);
 		lastNameField.setColumns(10);
 		
-		JComboBox comboBoxMonth = new JComboBox();
+		comboBoxMonth = new JComboBox();
 		comboBoxMonth.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		comboBoxMonth.setModel(new DefaultComboBoxModel(new String[] {"Month", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sept", "Oct", "Nov", "Dec"}));
 		comboBoxMonth.setMaximumRowCount(12);
@@ -76,7 +85,7 @@ public class RegistrationPanel extends JPanel {
 		lblDateOfBirth.setBounds(48, 171, 95, 14);
 		add(lblDateOfBirth);
 		
-		JComboBox comboBoxDay = new JComboBox();
+		comboBoxDay = new JComboBox();
 		comboBoxDay.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		comboBoxDay.setMaximumRowCount(32);
 		comboBoxDay.setModel(new DefaultComboBoxModel(new String[] {"Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
@@ -110,13 +119,14 @@ public class RegistrationPanel extends JPanel {
 		passwordField.setBounds(262, 263, 102, 22);
 		add(passwordField);
 		
-		JRadioButton radioButtonDoctor = new JRadioButton("Doctor");
+		radioButtonDoctor = new JRadioButton("Doctor");
 		radioButtonDoctor.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		radioButtonDoctor.setBackground(Color.LIGHT_GRAY);
 		radioButtonDoctor.setBounds(284, 312, 80, 22);
 		add(radioButtonDoctor);
+		radioButtonDoctor.setSelected(true);
 		
-		JRadioButton rdbtnPatient = new JRadioButton("Patient");
+		rdbtnPatient = new JRadioButton("Patient");
 		rdbtnPatient.setBackground(Color.LIGHT_GRAY);
 		rdbtnPatient.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		rdbtnPatient.setBounds(284, 336, 85, 27);
@@ -126,6 +136,16 @@ public class RegistrationPanel extends JPanel {
 		btnRegister.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnRegister.setBounds(180, 385, 89, 23);
 		add(btnRegister);
+		
+		groupButton();
 
 	}
+	
+	private void groupButton()
+	{
+		ButtonGroup bg = new ButtonGroup();
+		bg.add(radioButtonDoctor);
+		bg.add(rdbtnPatient);
+	}
+	
 }
