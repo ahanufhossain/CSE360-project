@@ -30,6 +30,7 @@ import javax.swing.AbstractListModel;
 public class addPatientPanel extends JPanel {
 	
 	public JButton btnAddPatient;
+	public JButton btnBack;
 	public JList patientList;
 	
 	String[] allPatNames = new String[] {"Paitent1", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8"};
@@ -63,7 +64,7 @@ public class addPatientPanel extends JPanel {
 		allPatScrollPane.setViewportView(allPatList);
 		add(allPatScrollPane);
 		
-		JButton btnBack = new JButton("Back");
+		btnBack = new JButton("Back");
 		btnBack.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnBack.setBounds(75, 369, 300, 40);
 		add(btnBack);

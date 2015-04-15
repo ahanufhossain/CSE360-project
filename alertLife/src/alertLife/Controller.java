@@ -73,6 +73,7 @@ public class Controller extends JFrame implements ActionListener
 		editProfile.saveButton.addActionListener(this);
 		editProfile.cancelButton.addActionListener(this);
 		newEntryPage.entryButton.addActionListener(this);
+		addPatientPage.btnBack.addActionListener(this);
 		
 		frame = new JFrame();
 		frame.setSize(450,500);
@@ -278,6 +279,14 @@ public class Controller extends JFrame implements ActionListener
 		if(e.getSource() == docPage.btnSeePatientDetails)
 		{
 			
+		}
+		//navigates from add patient page to doc page
+		if (e.getSource() == addPatientPage.btnBack)
+		{
+			frame.getContentPane().removeAll();
+			frame.getContentPane().add(docPage);
+			frame.setVisible(true);
+			frame.repaint();
 		}
 		//navigates from edit profile back to doc page
 		//or patient page depending on user type
