@@ -94,8 +94,8 @@ public class EditProfilePanel extends JPanel {
 		usernameField.setBounds(225, 182, 110, 30);
 		passwordLabel.setBounds(0, 182, 220, 30);
 		passwordField.setBounds(225, 223, 110, 30);
-		saveButton.setBounds(75, 375, 300, 40);
-		cancelButton.setBounds(75, 425, 300, 40);
+		saveButton.setBounds(75, 350, 300, 40);
+		cancelButton.setBounds(75, 400, 300, 40);
 		
 		
 		// add all

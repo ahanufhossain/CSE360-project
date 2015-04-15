@@ -88,12 +88,12 @@ public class PatientProfilePanel extends JPanel {
 		
 		btnNewEntry = new JButton("New Entry");
 		btnNewEntry.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnNewEntry.setBounds(75, 435, 300, 40);
+		btnNewEntry.setBounds(75, 421, 300, 40);
 		add(btnNewEntry);
 		
 		JScrollPane patHistoryScrollPane = new JScrollPane();
 		patHistoryScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);		
-		patHistoryScrollPane.setBounds(20, 200, 180, 222);
+		patHistoryScrollPane.setBounds(20, 200, 180, 210);
 		JList patHistoryList = new JList(patHistory);
 		patHistoryList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		patHistoryList.setModel(new AbstractListModel()
@@ -114,7 +114,7 @@ public class PatientProfilePanel extends JPanel {
 		JTextPane textPane = new JTextPane();
 		textPane.setEditable(false);
 		textPane.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		textPane.setBounds(250, 200, 180, 222);
+		textPane.setBounds(250, 200, 180, 210);
 		add(textPane);
 	
 		
