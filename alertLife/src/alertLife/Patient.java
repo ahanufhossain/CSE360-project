@@ -39,10 +39,7 @@ public class Patient extends User {
 		dateOfBirth = initDOB;
 		name = initName;
 		userType = "Patient";
-	}
-	
-	
-	
+	}	
 	
 	/***********************Constructors******************************************/
 	//Methods: Patient(), and Patient(String uName, String pw, String initDOB, String initName) 

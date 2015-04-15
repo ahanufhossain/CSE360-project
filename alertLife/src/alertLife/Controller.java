@@ -42,6 +42,10 @@ public class Controller extends JFrame implements ActionListener
 	JFrame frame;
 	ArrayList<User> listOfUsers;
 	User currentUser;
+	//TODO can't access diagnosis without it being a patient instead of a current user
+	//TODO set current patient and doctor somewhere
+	Patient currentPatient;
+	Doctor currentDoctor;
 	int indexOfCurrentUser; //needed to update the arraylist when users info is changed
 
 	
@@ -296,7 +300,6 @@ public class Controller extends JFrame implements ActionListener
 		}
 		//navigates from edit profile back to doc page
 		//or patient page depending on user type
-		//TODO update user information
 		if(e.getSource() == editProfile.saveButton)
 		{
 			if(currentUser.userType.equals("Doctor"))
@@ -380,45 +383,76 @@ public class Controller extends JFrame implements ActionListener
 		
 	}
 	
-	//returns the patient history as a string array
-	public String[] getPatHistoryList()
-	{
-		//TODO
-		return new String[] {"fix this"};
-	}
+//	//returns the patient history as a string array
+//	public String[] getPatHistoryList()
+//	{
+//		if (currentPatient.getDiagnoses().size() == 0)
+//		{
+//			return new String[] {"No diagnosis reported yet"};
+//		}
+//		else
+//		{
+//			ArrayList<String> patHistoryArrayList = new ArrayList<String>();
+//			for (int i = 0; i < currentPatient.getDiagnoses().size(); i++)
+//			{
+//				patHistoryArrayList.add(currentPatient.getDiagnoses().get(i).toShortString());
+//			}
+//			
+//			return patHistoryArrayList.toArray(new String[patHistoryArrayList.size()]);
+//		}
+//	}
 	
 	//updates all of the variables on the patient page 
 	public void updatePatientProfilePanel()
 	{
-		patientPage.patHistoryList = new JList<String>(getPatHistoryList());
+		//TODO
+		//patientPage.patHistory = getPatHistoryList();
+		patientPage.patHistory = new String[] {"Fix this.", "And this"};
+		patientPage.repaint();
 		//TODO
 	}
 	
-	//returns the doctor's patients as a string array
-	public String[] getDocPatNamesList()
-	{
-		//TODO
-		return new String[] {"fix this"};
-	}	
+//	//returns the doctor's patients as a string array
+//	public String[] getDocPatNamesList()
+//	{
+//		ArrayList<String> docPatArrayList = new ArrayList<String>();
+//		for (int i = 0; i < currentDoctor.getPatientList().size(); i++)
+//		{
+//			docPatArrayList.add(currentDoctor.getPatientList().get(i).getName());
+//		}
+//		
+//		return docPatArrayList.toArray(new String[docPatArrayList.size()]);
+//	}	
 	
 	//updates all of the variables on the patient page 
 	public void updateDoctorProfilePanel()
 	{
-		docPage.docsPatList = new JList<String>(getDocPatNamesList());
+		//TODO
+		//docPage.docPatNames = getDocPatNamesList();
+		docPage.docPatNames = new String[] {"Fix this.", "And this"};
+		docPage.repaint();
 		//TODO
 	}
 	
 	//returns the all of the patients as a string array
 	public String[] getAllPatNamesList()
 	{
-		//TODO
-		return new String[] {"fix this"};
+		ArrayList<String> allPatNamesArrayList = new ArrayList<String>();
+		for (int i = 0; i < listOfUsers.size(); i++)
+		{
+			allPatNamesArrayList.add(listOfUsers.get(i).getName());
+		}
+		
+		return allPatNamesArrayList.toArray(new String[allPatNamesArrayList.size()]);
 	}
 	
 	//updates all of the variables on the add patient page 
 	public void updateAddPatientPanel()
 	{
-		addPatientPage.allPatList = new JList<String>(getAllPatNamesList());
+		//TODO
+		addPatientPage.allPatNames = getAllPatNamesList();
+		//addPatientPage.allPatNames = new String[] {"Fix this.", "And this"};
+		addPatientPage.repaint();
 		//TODO
 	}
 	

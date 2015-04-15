@@ -109,4 +109,9 @@ public class Diagnosis {
 				"Dizziness:\t" + symptom1 + "\n" + 
 				dateTime;
 	}
+	
+	public String toShortString()
+	{
+		return dateTime + ": " + diagnosisName;
+	}
 }
