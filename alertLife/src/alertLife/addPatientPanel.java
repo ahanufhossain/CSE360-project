@@ -47,23 +47,6 @@ public class addPatientPanel extends JPanel {
 		btnAddPatient.setBounds(75, 420, 300, 40);
 		add(btnAddPatient);
 		
-//		JList patientList = new JList();
-//		patientList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-//		patientList.setModel(new AbstractListModel() {
-//			String[] values = new String[] {"patient1", "patient2", "patient3", "jimmy mcGee"};
-//			public int getSize() {
-//				return values.length;
-//			}
-//			public Object getElementAt(int index) {
-//				return values[index];
-//			}
-//		});
-//		patientList.setVisibleRowCount(10);
-//		patientList.setBorder(new CompoundBorder(new LineBorder(new Color(0, 0, 0)), new LineBorder(new Color(0, 0, 0))));
-//		patientList.setBounds(76, 92, 291, 273);
-//		add(patientList);
-//		patientList.setBackground(Color.WHITE);
-		
 		JScrollPane allPatScrollPane = new JScrollPane();
 		allPatScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		allPatScrollPane.setBounds(75, 90, 300, 300);
