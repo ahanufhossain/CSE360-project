@@ -9,6 +9,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class LoginScreenPanel extends JPanel {
 	JTextField fieldUsername;
@@ -24,8 +25,9 @@ public class LoginScreenPanel extends JPanel {
 		setLayout(null);
 		
 		JLabel lblLogin = new JLabel("Login");
+		lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLogin.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		lblLogin.setBounds(203, 85, 43, 26);
+		lblLogin.setBounds(0, 85, 450, 26);
 		add(lblLogin);
 		
 		JLabel lblPassword = new JLabel("Password");

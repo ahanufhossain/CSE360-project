@@ -28,6 +28,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 public class RegistrationPanel extends JPanel {
 	JTextField firstNameField;
@@ -49,8 +50,9 @@ public class RegistrationPanel extends JPanel {
 		setLayout(null);
 		
 		JLabel lblRegistration = new JLabel("Registration");
-		lblRegistration.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblRegistration.setBounds(170, 39, 110, 22);
+		lblRegistration.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRegistration.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+		lblRegistration.setBounds(0, 27, 450, 34);
 		add(lblRegistration);
 		
 		JLabel lblFirstName = new JLabel("First Name");

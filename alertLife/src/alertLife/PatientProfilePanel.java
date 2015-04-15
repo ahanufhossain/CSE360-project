@@ -22,6 +22,7 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JList;
 import javax.swing.JScrollBar;
+import javax.swing.SwingConstants;
 
 public class PatientProfilePanel extends JPanel {
 
@@ -35,8 +36,9 @@ public class PatientProfilePanel extends JPanel {
 		setLayout(null);
 		
 		JLabel lblProfilePage = new JLabel("Profile Page");
+		lblProfilePage.setHorizontalAlignment(SwingConstants.CENTER);
 		lblProfilePage.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		lblProfilePage.setBounds(171, 22, 107, 37);
+		lblProfilePage.setBounds(0, 22, 450, 37);
 		add(lblProfilePage);
 		
 		JLabel lblName = new JLabel("Name: ");

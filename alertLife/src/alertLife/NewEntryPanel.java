@@ -48,6 +48,7 @@ public class NewEntryPanel extends JPanel {
 		pSlider.setSnapToTicks(true);
 		pSlider.setMajorTickSpacing(1);
 		pSlider.setMaximum(5);
+		pSlider.setValue(0);
 		add(pSlider);
 		
 		nSlider = new JSlider();
@@ -55,6 +56,7 @@ public class NewEntryPanel extends JPanel {
 		nSlider.setSnapToTicks(true);
 		nSlider.setMajorTickSpacing(1);
 		nSlider.setMaximum(5);
+		nSlider.setValue(0);
 		add(nSlider);
 		
 		sSlider = new JSlider();
@@ -62,6 +64,7 @@ public class NewEntryPanel extends JPanel {
 		sSlider.setSnapToTicks(true);
 		sSlider.setMajorTickSpacing(1);
 		sSlider.setMaximum(5);
+		sSlider.setValue(0);
 		add(sSlider);
 		
 		fSlider = new JSlider();
@@ -69,6 +72,7 @@ public class NewEntryPanel extends JPanel {
 		fSlider.setSnapToTicks(true);
 		fSlider.setMajorTickSpacing(1);
 		fSlider.setMaximum(5);
+		fSlider.setValue(0);
 		add(fSlider);
 		
 		dSlider = new JSlider();
@@ -77,6 +81,7 @@ public class NewEntryPanel extends JPanel {
 		dSlider.setMajorTickSpacing(1);
 		dSlider.setMaximum(5);
 		dSlider.setPaintLabels(true);
+		dSlider.setValue(0);
 		dSlider.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
 		add(dSlider);
 		
@@ -108,6 +113,7 @@ public class NewEntryPanel extends JPanel {
 		enterComments = new JTextPane();
 		enterComments.setText("Enter Additional Information...");
 		enterComments.setBounds(50, 325, 350, 100);
+		enterComments.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		add(enterComments);
 		
 		JLabel lblComments = new JLabel("Comments:");

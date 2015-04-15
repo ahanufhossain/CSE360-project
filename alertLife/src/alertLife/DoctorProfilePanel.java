@@ -54,7 +54,7 @@ public class DoctorProfilePanel extends JPanel {
 		add(scrollPane);
 		
 		JLabel lblDoctorNamesProfile = new JLabel(doctorName + "'s Profile Page", SwingConstants.CENTER);
-		lblDoctorNamesProfile.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+		lblDoctorNamesProfile.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		lblDoctorNamesProfile.setBounds(0, 32, 450, 39);
 		add(lblDoctorNamesProfile);
 		
