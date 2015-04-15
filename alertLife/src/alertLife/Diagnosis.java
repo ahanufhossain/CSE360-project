@@ -12,6 +12,10 @@
 /***********************************************/
 package alertLife;
 
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 public class Diagnosis {
 	
 	private int symptom1;
@@ -21,6 +25,10 @@ public class Diagnosis {
 	private int symptom5;
 	private String comment;
 	private String doctor;
+	private String diagnosisName;
+	private DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	private Date date = new Date();
+	private String dateTime;
 	
 	public Diagnosis()
 	{
@@ -33,7 +41,7 @@ public class Diagnosis {
 		doctor = "";
 	}
 	
-	public Diagnosis(int symp1, int symp2, int symp3, int symp4, int symp5, String com, String doc)
+	public Diagnosis(int symp1, int symp2, int symp3, int symp4, int symp5, String com, String doc, String dName)
 	{
 		symptom1 = symp1;
 		symptom2 = symp2;
@@ -42,6 +50,8 @@ public class Diagnosis {
 		symptom5 = symp5;
 		comment = com;
 		doctor = doc;
+		diagnosisName = dName;
+		dateTime = dateFormat.format(date);
 	}
 	
 	public int getSymptom(int num)
@@ -66,6 +76,16 @@ public class Diagnosis {
 		return doctor;
 	}
 	
+	public String getDiagnosisName()
+	{
+		return diagnosisName;
+	}
+	
+	public String getDiagnosisDateTime()
+	{
+		return dateTime;
+	}
+	
 	public void setSymptom(int s, int value)
 	{
 		switch (s)
@@ -78,13 +98,15 @@ public class Diagnosis {
 		}
 	}
 	
-	public void setComment(String c)
+	public String toString()
 	{
-		comment = c;
-	}
-	
-	public void setDoctor(String d)
-	{
-		doctor = d;
+		return "Diagnosis:\t" + diagnosisName + "\n" +
+				"Doctor:\t" + doctor + "\n" +
+				"Pain:\t" + symptom1 + "\n" + 
+				"Nausea:\t" + symptom1 + "\n" + 
+				"Sleepiness:\t" + symptom1 + "\n" + 
+				"Fatigue:\t" + symptom1 + "\n" + 
+				"Dizziness:\t" + symptom1 + "\n" + 
+				dateTime;
 	}
 }

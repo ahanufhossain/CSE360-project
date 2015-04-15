@@ -23,6 +23,11 @@ import javax.swing.JTextPane;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
+import java.awt.Choice;
+
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+
 public class NewEntryPanel extends JPanel {
 
 	JSlider pSlider;
@@ -32,6 +37,7 @@ public class NewEntryPanel extends JPanel {
 	JSlider dSlider;
 	JTextPane enterComments;
 	JButton entryButton;
+	String[] diagnosisNames = new String[] {"Urothelial Carcinoma", "Ductal Carcinoma", "Colorectal Polyps", "Leukemia", "Melanoma", "Ulcerative Colitis"};
 	
 	public NewEntryPanel() 
 	{
@@ -44,7 +50,7 @@ public class NewEntryPanel extends JPanel {
 		add(lblDiagnosis);
 		
 		pSlider = new JSlider();
-		pSlider.setBounds(120, 60, 210, 30);
+		pSlider.setBounds(120, 100, 210, 30);
 		pSlider.setSnapToTicks(true);
 		pSlider.setMajorTickSpacing(1);
 		pSlider.setMaximum(5);
@@ -52,7 +58,7 @@ public class NewEntryPanel extends JPanel {
 		add(pSlider);
 		
 		nSlider = new JSlider();
-		nSlider.setBounds(120, 100, 210, 30);
+		nSlider.setBounds(120, 140, 210, 30);
 		nSlider.setSnapToTicks(true);
 		nSlider.setMajorTickSpacing(1);
 		nSlider.setMaximum(5);
@@ -60,7 +66,7 @@ public class NewEntryPanel extends JPanel {
 		add(nSlider);
 		
 		sSlider = new JSlider();
-		sSlider.setBounds(120, 140, 210, 30);
+		sSlider.setBounds(120, 180, 210, 30);
 		sSlider.setSnapToTicks(true);
 		sSlider.setMajorTickSpacing(1);
 		sSlider.setMaximum(5);
@@ -68,7 +74,7 @@ public class NewEntryPanel extends JPanel {
 		add(sSlider);
 		
 		fSlider = new JSlider();
-		fSlider.setBounds(120, 180, 210, 30);
+		fSlider.setBounds(120, 220, 210, 30);
 		fSlider.setSnapToTicks(true);
 		fSlider.setMajorTickSpacing(1);
 		fSlider.setMaximum(5);
@@ -76,7 +82,7 @@ public class NewEntryPanel extends JPanel {
 		add(fSlider);
 		
 		dSlider = new JSlider();
-		dSlider.setBounds(120, 220, 210, 50);
+		dSlider.setBounds(120, 260, 210, 50);
 		dSlider.setSnapToTicks(true);
 		dSlider.setMajorTickSpacing(1);
 		dSlider.setMaximum(5);
@@ -88,61 +94,54 @@ public class NewEntryPanel extends JPanel {
 		JLabel lblPain = new JLabel("Pain:");
 		lblPain.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblPain.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblPain.setBounds(0, 60, 110, 30);
+		lblPain.setBounds(0, 100, 110, 30);
 		add(lblPain);
 		
 		JLabel lblNausea = new JLabel("Nausea:");
 		lblNausea.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNausea.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblNausea.setBounds(0, 100, 110, 30);
+		lblNausea.setBounds(0, 140, 110, 30);
 		add(lblNausea);
 		
 		JLabel lblDizziness = new JLabel("Dizziness:");
 		lblDizziness.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblDizziness.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblDizziness.setBounds(0, 220, 110, 30);
+		lblDizziness.setBounds(0, 260, 110, 30);
 		add(lblDizziness);
 		
 		JLabel lblSleepiness = new JLabel("Sleepiness:");
 		lblSleepiness.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblSleepiness.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblSleepiness.setBounds(0, 140, 110, 30);
+		lblSleepiness.setBounds(0, 180, 110, 30);
 		add(lblSleepiness);
 		
 		JLabel lblFatigue = new JLabel("Fatigue:");
 		lblFatigue.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblFatigue.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblFatigue.setBounds(0, 180, 110, 30);
+		lblFatigue.setBounds(0, 220, 110, 30);
 		add(lblFatigue);
 		
 		enterComments = new JTextPane();
 		enterComments.setText("Enter Additional Information...");
-		enterComments.setBounds(75, 325, 300, 100);
+		enterComments.setBounds(75, 345, 300, 91);
 		enterComments.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		add(enterComments);
 		
 		JLabel lblComments = new JLabel("Comments:");
 		lblComments.setHorizontalAlignment(SwingConstants.CENTER);
 		lblComments.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblComments.setBounds(0, 290, 450, 34);
+		lblComments.setBounds(0, 311, 450, 34);
 		add(lblComments);
 		
 		entryButton = new JButton("Complete Entry");
-		entryButton.setBounds(75, 450, 300, 40);
+		entryButton.setBounds(75, 447, 300, 40);
 		entryButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		add(entryButton);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		comboBox.setModel(new DefaultComboBoxModel(diagnosisNames));
+		comboBox.setBounds(75, 60, 300, 30);
+		add(comboBox);		
 	}
-	
-//	public Diagnosis getEntry()
-//	{
-//		int pValue = pSlider.getValue();
-//		int nValue = nSlider.getValue();
-//		int sValue = sSlider.getValue();
-//		int fValue = fSlider.getValue();
-//		int dValue = dSlider.getValue();
-//		String comments = enterComments.getText();
-//		
-//		Diagnosis diag = new Diagnosis(whatever parameters are);
-//		return diag;
-//	}
 }
