@@ -15,8 +15,11 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
+
 import java.awt.Font;
 import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.border.CompoundBorder;
@@ -29,11 +32,7 @@ public class addPatientPanel extends JPanel {
 	public JButton btnAddPatient;
 	public JList patientList;
 	
-	
-
-	/**
-	 * Create the panel.
-	 */
+	String[] allPatNames = new String[] {"Paitent1", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8"};
 	public addPatientPanel() {
 		setBorder(null);
 		setLayout(null);
@@ -48,24 +47,38 @@ public class addPatientPanel extends JPanel {
 		btnAddPatient.setBounds(75, 420, 300, 40);
 		add(btnAddPatient);
 		
-		JList patientList = new JList();
-		patientList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		patientList.setModel(new AbstractListModel() {
-			String[] values = new String[] {"patient1", "patient2", "patient3", "jimmy mcGee"};
+//		JList patientList = new JList();
+//		patientList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+//		patientList.setModel(new AbstractListModel() {
+//			String[] values = new String[] {"patient1", "patient2", "patient3", "jimmy mcGee"};
+//			public int getSize() {
+//				return values.length;
+//			}
+//			public Object getElementAt(int index) {
+//				return values[index];
+//			}
+//		});
+//		patientList.setVisibleRowCount(10);
+//		patientList.setBorder(new CompoundBorder(new LineBorder(new Color(0, 0, 0)), new LineBorder(new Color(0, 0, 0))));
+//		patientList.setBounds(76, 92, 291, 273);
+//		add(patientList);
+//		patientList.setBackground(Color.WHITE);
+		
+		JScrollPane allPatScrollPane = new JScrollPane();
+		allPatScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		allPatScrollPane.setBounds(75, 90, 300, 300);
+		JList allPatList = new JList(allPatNames);
+		allPatList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		allPatList.setModel(new AbstractListModel() {
 			public int getSize() {
-				return values.length;
+				return allPatNames.length;
 			}
 			public Object getElementAt(int index) {
-				return values[index];
+				return allPatNames[index];
 			}
 		});
-		patientList.setVisibleRowCount(10);
-		patientList.setBorder(new CompoundBorder(new LineBorder(new Color(0, 0, 0)), new LineBorder(new Color(0, 0, 0))));
-		patientList.setBounds(76, 92, 291, 273);
-		add(patientList);
-		patientList.setBackground(Color.WHITE);
-		
-	
+		allPatScrollPane.setViewportView(allPatList);
+		add(allPatScrollPane);
 
 	}
 }

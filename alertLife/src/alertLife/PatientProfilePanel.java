@@ -16,20 +16,28 @@ package alertLife;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+
 import java.awt.Color;
 import java.awt.Font;
+
+import javax.swing.AbstractListModel;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JList;
 import javax.swing.JScrollBar;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+
 import java.awt.Choice;
+
 import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
 
 public class PatientProfilePanel extends JPanel {
 
 	JButton btnEditProfile;
 	JButton btnNewEntry;
+	String[] patHistory = new String[] {"History1", "History2", "History3", "History4", "History5", "History6", "History7", "History8", "History9", "History10", "History11", "History12"};
 
 	public PatientProfilePanel() {
 		setBackground(Color.LIGHT_GRAY);
@@ -69,18 +77,45 @@ public class PatientProfilePanel extends JPanel {
 		JLabel lblHistory = new JLabel("History:");
 		lblHistory.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHistory.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblHistory.setBounds(20, 170, 187, 26);
+		lblHistory.setBounds(20, 170, 180, 26);
 		add(lblHistory);
 		
 		JLabel lblSelectedEntry = new JLabel("Selected Entry:");
+		lblSelectedEntry.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelectedEntry.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblSelectedEntry.setBounds(250, 170, 168, 26);
+		lblSelectedEntry.setBounds(250, 170, 180, 26);
 		add(lblSelectedEntry);
 		
 		btnNewEntry = new JButton("New Entry");
 		btnNewEntry.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnNewEntry.setBounds(75, 440, 300, 40);
 		add(btnNewEntry);
+		
+		JScrollPane patHistoryScrollPane = new JScrollPane();
+		patHistoryScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);		
+		patHistoryScrollPane.setBounds(20, 200, 180, 222);
+		JList patHistoryList = new JList(patHistory);
+		patHistoryList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		patHistoryList.setModel(new AbstractListModel()
+		{
+			public int getSize()
+			{
+				return patHistory.length;
+			}
+			public Object getElementAt(int index)
+			{
+				return patHistory[index];
+			}
+			
+		});
+		patHistoryScrollPane.setViewportView(patHistoryList);
+		add(patHistoryScrollPane);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setEditable(false);
+		textPane.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		textPane.setBounds(250, 200, 180, 222);
+		add(textPane);
 	
 		
 

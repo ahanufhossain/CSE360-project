@@ -27,7 +27,7 @@ import java.awt.event.ActionEvent;
 
 public class DoctorProfilePanel extends JPanel {
 
-	String[] patientNames = new String[] {"Paitent1", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8"};
+	String[] docPatNames = new String[] {"Paitent1", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8"};
 	String doctorName = "Example Doctor Name";
 	JButton btnSeePatientDetails;
 	JButton btnAddPatient;
@@ -36,22 +36,21 @@ public class DoctorProfilePanel extends JPanel {
 	public DoctorProfilePanel() {
 		setLayout(null);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(75, 105, 300, 100);
-		JList list = new JList();
-		list.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		list.setModel(new AbstractListModel() {
-			//String[] values = new String[] {"Paitent1", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8"};
+		JScrollPane doscPatScrollPane = new JScrollPane();
+		doscPatScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		doscPatScrollPane.setBounds(75, 105, 300, 100);
+		JList docsPatList = new JList(docPatNames);
+		docsPatList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		docsPatList.setModel(new AbstractListModel() {
 			public int getSize() {
-				return patientNames.length;
+				return docPatNames.length;
 			}
 			public Object getElementAt(int index) {
-				return patientNames[index];
+				return docPatNames[index];
 			}
 		});
-		scrollPane.setViewportView(list);
-		add(scrollPane);
+		doscPatScrollPane.setViewportView(docsPatList);
+		add(doscPatScrollPane);
 		
 		JLabel lblDoctorNamesProfile = new JLabel(doctorName + "'s Profile Page", SwingConstants.CENTER);
 		lblDoctorNamesProfile.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
