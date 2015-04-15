@@ -38,7 +38,9 @@ public class PatientProfilePanel extends JPanel {
 	JButton btnEditProfile;
 	JButton btnNewEntry;
 	String[] patHistory = new String[] {"History1", "History2", "History3", "History4", "History5", "History6", "History7", "History8", "History9", "History10", "History11", "History12"};
-
+	JButton patProfileBackButton;
+	JTextPane diagnosisDisplayPane;
+	
 	public PatientProfilePanel() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
@@ -88,12 +90,12 @@ public class PatientProfilePanel extends JPanel {
 		
 		btnNewEntry = new JButton("New Entry");
 		btnNewEntry.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnNewEntry.setBounds(75, 421, 300, 40);
+		btnNewEntry.setBounds(20, 421, 200, 40);
 		add(btnNewEntry);
 		
 		JScrollPane patHistoryScrollPane = new JScrollPane();
 		patHistoryScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);		
-		patHistoryScrollPane.setBounds(20, 200, 180, 210);
+		patHistoryScrollPane.setBounds(20, 200, 200, 210);
 		JList patHistoryList = new JList(patHistory);
 		patHistoryList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		patHistoryList.setModel(new AbstractListModel()
@@ -111,11 +113,16 @@ public class PatientProfilePanel extends JPanel {
 		patHistoryScrollPane.setViewportView(patHistoryList);
 		add(patHistoryScrollPane);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setEditable(false);
-		textPane.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		textPane.setBounds(250, 200, 180, 210);
-		add(textPane);
+		diagnosisDisplayPane = new JTextPane();
+		diagnosisDisplayPane.setEditable(false);
+		diagnosisDisplayPane.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		diagnosisDisplayPane.setBounds(230, 200, 200, 210);
+		add(diagnosisDisplayPane);
+		
+		patProfileBackButton = new JButton("Back");
+		patProfileBackButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		patProfileBackButton.setBounds(230, 421, 200, 40);
+		add(patProfileBackButton);
 	
 		
 
