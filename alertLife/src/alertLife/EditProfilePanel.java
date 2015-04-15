@@ -84,18 +84,18 @@ public class EditProfilePanel extends JPanel {
 		
 		
 		//bounds				
-		titleLabel.setBounds(0, 85, 450, 20);
+		titleLabel.setBounds(0, 55, 450, 20);
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		nameLabel.setBounds(0, 161, 215, 30);
-		nameField.setBounds(225, 161, 110, 30);
-		dobLabel.setBounds(0, 202, 220, 30);
-		dobField.setBounds(225, 202, 110, 30);
-		usernameLabel.setBounds(0, 284, 220, 30);
-		usernameField.setBounds(225, 243, 110, 30);
-		passwordLabel.setBounds(0, 243, 220, 30);
-		passwordField.setBounds(225, 284, 110, 30);
-		saveButton.setBounds(75, 399, 300, 40);
-		cancelButton.setBounds(75, 449, 300, 40);
+		nameLabel.setBounds(0, 100, 215, 30);
+		nameField.setBounds(225, 100, 110, 30);
+		dobLabel.setBounds(0, 141, 220, 30);
+		dobField.setBounds(225, 141, 110, 30);
+		usernameLabel.setBounds(0, 223, 220, 30);
+		usernameField.setBounds(225, 182, 110, 30);
+		passwordLabel.setBounds(0, 182, 220, 30);
+		passwordField.setBounds(225, 223, 110, 30);
+		saveButton.setBounds(75, 375, 300, 40);
+		cancelButton.setBounds(75, 425, 300, 40);
 		
 		
 		// add all

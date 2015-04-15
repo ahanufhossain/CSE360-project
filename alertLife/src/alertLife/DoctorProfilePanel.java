@@ -38,7 +38,7 @@ public class DoctorProfilePanel extends JPanel {
 		
 		JScrollPane doscPatScrollPane = new JScrollPane();
 		doscPatScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		doscPatScrollPane.setBounds(75, 82, 291, 256);
+		doscPatScrollPane.setBounds(75, 77, 291, 251);
 		JList docsPatList = new JList(docPatNames);
 		docsPatList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		docsPatList.setModel(new AbstractListModel() {
@@ -54,12 +54,12 @@ public class DoctorProfilePanel extends JPanel {
 		
 		JLabel lblDoctorNamesProfile = new JLabel(doctorName + "'s Profile Page", SwingConstants.CENTER);
 		lblDoctorNamesProfile.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		lblDoctorNamesProfile.setBounds(0, 32, 450, 39);
+		lblDoctorNamesProfile.setBounds(0, 27, 450, 39);
 		add(lblDoctorNamesProfile);
 		
 		btnSeePatientDetails = new JButton("See Patient Details");
 		btnSeePatientDetails.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnSeePatientDetails.setBounds(75, 349, 300, 40);
+		btnSeePatientDetails.setBounds(75, 335, 300, 40);
 		add(btnSeePatientDetails);
 		
 		btnAddPatient = new JButton("Add Patient");
@@ -68,12 +68,12 @@ public class DoctorProfilePanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnAddPatient.setBounds(75, 399, 300, 40);
+		btnAddPatient.setBounds(75, 385, 300, 40);
 		add(btnAddPatient);
 		
 		btnEditProfile = new JButton("Edit Profile");
 		btnEditProfile.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnEditProfile.setBounds(75, 449, 300, 40);
+		btnEditProfile.setBounds(75, 435, 300, 40);
 		add(btnEditProfile);
 	}
 }

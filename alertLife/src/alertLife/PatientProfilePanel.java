@@ -88,7 +88,7 @@ public class PatientProfilePanel extends JPanel {
 		
 		btnNewEntry = new JButton("New Entry");
 		btnNewEntry.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnNewEntry.setBounds(75, 440, 300, 40);
+		btnNewEntry.setBounds(75, 435, 300, 40);
 		add(btnNewEntry);
 		
 		JScrollPane patHistoryScrollPane = new JScrollPane();

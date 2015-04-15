@@ -129,18 +129,18 @@ public class NewEntryPanel extends JPanel {
 		JScrollPane jsp = new JScrollPane(enterComments);
 		jsp.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
 		enterComments.setText("Enter Additional Information...");
-		jsp.setBounds(75, 345, 300, 91);
+		jsp.setBounds(75, 340, 300, 91);
 		enterComments.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		add(jsp);
 		
 		JLabel lblComments = new JLabel("Comments:");
 		lblComments.setHorizontalAlignment(SwingConstants.CENTER);
 		lblComments.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblComments.setBounds(0, 311, 450, 34);
+		lblComments.setBounds(0, 306, 450, 34);
 		add(lblComments);
 		
 		btnBack = new JButton("Back");
-		btnBack.setBounds(265, 447, 110, 40);
+		btnBack.setBounds(265, 437, 110, 40);
 		btnBack.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		add(btnBack);
 		
@@ -152,7 +152,7 @@ public class NewEntryPanel extends JPanel {
 		
 		btnSaveEntry = new JButton("Complete Entry");
 		btnSaveEntry.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnSaveEntry.setBounds(75, 447, 180, 40);
+		btnSaveEntry.setBounds(75, 437, 180, 40);
 		add(btnSaveEntry);
 	}
 }
