@@ -270,26 +270,44 @@ public class Controller extends JFrame implements ActionListener
 		{
 			
 		}
-		//navigates from edit profile back to doc page for now
-		//later needs to check if current user is doc or patient
-		//and then go back to either doc or patient page
-		//also needs to update information for the current user
+		//navigates from edit profile back to doc page
+		//or patient page depending on user type
+		//TODO update user information
 		if(e.getSource() == editProfile.saveButton)
 		{
-			frame.getContentPane().removeAll();
-			frame.getContentPane().add(docPage);
-			frame.setVisible(true);
-			frame.repaint();
+			if(currentUser.userType.equals("Doctor"))
+			{
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(docPage);
+				frame.setVisible(true);
+				frame.repaint();
+			}
+			else
+			{
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(patientPage);
+				frame.setVisible(true);
+				frame.repaint();
+			}
 		}
-		//navigates from edit profile back to doc page for now
-		//needs to check if current user is doc or patient
-		//and then go back to either doc or patient page
+		//navigates from edit profile back to doc page
+		//or patient page depending on user type
 		if(e.getSource() == editProfile.cancelButton)
 		{
-			frame.getContentPane().removeAll();
-			frame.getContentPane().add(docPage);
-			frame.setVisible(true);
-			frame.repaint();
+			if(currentUser.userType.equals("Doctor"))
+			{
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(docPage);
+				frame.setVisible(true);
+				frame.repaint();
+			}
+			else
+			{
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(patientPage);
+				frame.setVisible(true);
+				frame.repaint();
+			}
 		}
 		//navigates from patient page to edit profile page
 		if(e.getSource() == patientPage.btnEditProfile)
