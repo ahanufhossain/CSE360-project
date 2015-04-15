@@ -31,6 +31,10 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 public class RegistrationPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JTextField firstNameField;
 	JTextField lastNameField;
 	JTextField txtYear;
@@ -39,8 +43,8 @@ public class RegistrationPanel extends JPanel {
 	JButton btnRegister;
 	JRadioButton radioButtonDoctor;
 	JRadioButton rdbtnPatient;
-	JComboBox comboBoxMonth;
-	JComboBox comboBoxDay;
+	JComboBox<?> comboBoxMonth;
+	JComboBox<?> comboBoxDay;
 
 	/**
 	 * Create the panel.
@@ -55,23 +59,27 @@ public class RegistrationPanel extends JPanel {
 		lblRegistration.setBounds(0, 27, 450, 34);
 		add(lblRegistration);
 		
-		JLabel lblFirstName = new JLabel("First Name");
+		JLabel lblFirstName = new JLabel("First Name:");
+		lblFirstName.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblFirstName.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblFirstName.setBounds(48, 83, 80, 22);
+		lblFirstName.setBounds(0, 85, 220, 30);
 		add(lblFirstName);
 		
-		JLabel lblLastName = new JLabel("Last Name");
+		JLabel lblLastName = new JLabel("Last Name:");
+		lblLastName.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblLastName.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblLastName.setBounds(48, 120, 80, 14);
+		lblLastName.setBounds(0, 125, 220, 30);
 		add(lblLastName);
 		
 		firstNameField = new JTextField();
-		firstNameField.setBounds(262, 85, 102, 22);
+		firstNameField.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 14));
+		firstNameField.setBounds(225, 85, 110, 30);
 		add(firstNameField);
 		firstNameField.setColumns(10);
 		
 		lastNameField = new JTextField();
-		lastNameField.setBounds(262, 118, 102, 22);
+		lastNameField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		lastNameField.setBounds(225, 125, 110, 30);
 		add(lastNameField);
 		lastNameField.setColumns(10);
 		
@@ -79,64 +87,70 @@ public class RegistrationPanel extends JPanel {
 		comboBoxMonth.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		comboBoxMonth.setModel(new DefaultComboBoxModel(new String[] {"Month", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sept", "Oct", "Nov", "Dec"}));
 		comboBoxMonth.setMaximumRowCount(12);
-		comboBoxMonth.setBounds(212, 165, 68, 27);
+		comboBoxMonth.setBounds(225, 166, 68, 30);
 		add(comboBoxMonth);
 		
-		JLabel lblDateOfBirth = new JLabel("Date of Birth");
+		JLabel lblDateOfBirth = new JLabel("Date of Birth:");
+		lblDateOfBirth.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblDateOfBirth.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblDateOfBirth.setBounds(48, 171, 95, 14);
+		lblDateOfBirth.setBounds(0, 167, 220, 29);
 		add(lblDateOfBirth);
 		
 		comboBoxDay = new JComboBox();
 		comboBoxDay.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		comboBoxDay.setMaximumRowCount(32);
 		comboBoxDay.setModel(new DefaultComboBoxModel(new String[] {"Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
-		comboBoxDay.setBounds(290, 165, 56, 26);
+		comboBoxDay.setBounds(303, 166, 56, 30);
 		add(comboBoxDay);
 		
 		txtYear = new JTextField();
 		txtYear.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		txtYear.setText("Year");
-		txtYear.setBounds(362, 167, 49, 22);
+		txtYear.setBounds(370, 166, 49, 30);
 		add(txtYear);
 		txtYear.setColumns(10);
 		
-		JLabel lblUsername = new JLabel("Username");
+		JLabel lblUsername = new JLabel("Username:");
+		lblUsername.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblUsername.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblUsername.setBounds(48, 227, 80, 14);
+		lblUsername.setBounds(0, 207, 220, 30);
 		add(lblUsername);
 		
-		JLabel lblPassword = new JLabel("Password");
+		JLabel lblPassword = new JLabel("Password:");
+		lblPassword.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblPassword.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblPassword.setBounds(48, 265, 68, 14);
+		lblPassword.setBounds(0, 247, 220, 29);
 		add(lblPassword);
 		
 		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		textField.setBounds(262, 225, 102, 22);
+		textField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		textField.setBounds(225, 209, 102, 30);
 		add(textField);
 		textField.setColumns(10);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(262, 263, 102, 22);
+		passwordField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		passwordField.setBounds(225, 248, 102, 30);
 		add(passwordField);
 		
 		radioButtonDoctor = new JRadioButton("Doctor");
+		radioButtonDoctor.setHorizontalAlignment(SwingConstants.CENTER);
 		radioButtonDoctor.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		radioButtonDoctor.setBackground(Color.LIGHT_GRAY);
-		radioButtonDoctor.setBounds(284, 312, 80, 22);
+		radioButtonDoctor.setBounds(0, 284, 450, 30);
 		add(radioButtonDoctor);
 		radioButtonDoctor.setSelected(true);
 		
 		rdbtnPatient = new JRadioButton("Patient");
+		rdbtnPatient.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnPatient.setBackground(Color.LIGHT_GRAY);
 		rdbtnPatient.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		rdbtnPatient.setBounds(284, 336, 85, 27);
+		rdbtnPatient.setBounds(0, 324, 450, 30);
 		add(rdbtnPatient);
 		
 		btnRegister = new JButton("Register");
 		btnRegister.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnRegister.setBounds(180, 385, 89, 23);
+		btnRegister.setBounds(75, 400, 300, 40);
 		add(btnRegister);
 		
 		groupButton();

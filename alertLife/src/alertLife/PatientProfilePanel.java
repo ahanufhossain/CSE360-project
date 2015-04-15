@@ -23,14 +23,14 @@ import javax.swing.JTable;
 import javax.swing.JList;
 import javax.swing.JScrollBar;
 import javax.swing.SwingConstants;
+import java.awt.Choice;
+import javax.swing.JScrollPane;
 
 public class PatientProfilePanel extends JPanel {
 
 	JButton btnEditProfile;
 	JButton btnNewEntry;
-	/**
-	 * Create the panel.
-	 */
+
 	public PatientProfilePanel() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
@@ -53,50 +53,36 @@ public class PatientProfilePanel extends JPanel {
 		
 		JLabel lblUsername = new JLabel("Username: ");
 		lblUsername.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblUsername.setBounds(246, 63, 151, 14);
+		lblUsername.setBounds(250, 63, 151, 14);
 		add(lblUsername);
 		
 		JLabel lblDoctor = new JLabel("Doctor: ");
 		lblDoctor.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblDoctor.setBounds(246, 89, 151, 14);
+		lblDoctor.setBounds(250, 89, 151, 14);
 		add(lblDoctor);
 		
 		btnEditProfile = new JButton("Edit Profile");
 		btnEditProfile.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnEditProfile.setBounds(168, 130, 113, 23);
+		btnEditProfile.setBounds(75, 120, 300, 40);
 		add(btnEditProfile);
 		
-		JLabel lblHistory = new JLabel("History");
-		lblHistory.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
-		lblHistory.setBounds(67, 171, 62, 26);
+		JLabel lblHistory = new JLabel("History:");
+		lblHistory.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHistory.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		lblHistory.setBounds(20, 170, 187, 26);
 		add(lblHistory);
 		
-		JList listHistory = new JList();
-		listHistory.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		listHistory.setBounds(10, 208, 160, 244);
-		add(listHistory);
-		
-		JScrollBar scrollBarHistory = new JScrollBar();
-		scrollBarHistory.setBounds(169, 208, 17, 244);
-		add(scrollBarHistory);
-		
-		JLabel lblSelectedEntry = new JLabel("Selected Entry");
-		lblSelectedEntry.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
-		lblSelectedEntry.setBounds(288, 171, 126, 26);
+		JLabel lblSelectedEntry = new JLabel("Selected Entry:");
+		lblSelectedEntry.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		lblSelectedEntry.setBounds(250, 170, 168, 26);
 		add(lblSelectedEntry);
-		
-		JScrollBar scrollBarSelectEntry = new JScrollBar();
-		scrollBarSelectEntry.setBounds(423, 208, 17, 244);
-		add(scrollBarSelectEntry);
-		
-		JList list = new JList();
-		list.setBounds(264, 208, 160, 244);
-		add(list);
 		
 		btnNewEntry = new JButton("New Entry");
 		btnNewEntry.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnNewEntry.setBounds(170, 463, 110, 23);
+		btnNewEntry.setBounds(75, 440, 300, 40);
 		add(btnNewEntry);
+	
+		
 
 	}
 }

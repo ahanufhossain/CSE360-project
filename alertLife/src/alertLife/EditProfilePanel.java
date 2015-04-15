@@ -47,14 +47,22 @@ public class EditProfilePanel extends JPanel {
 		
 		titleLabel = new JLabel("Edit Profile");
 		nameLabel = new JLabel("Name: ");
+		nameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		dobLabel = new JLabel("DOB: ");
+		dobLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		usernameLabel = new JLabel("Username: ");
+		usernameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		passwordLabel = new JLabel("Password: ");
+		passwordLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		
 		nameField = new JTextField();
+		nameField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		dobField = new JTextField();
+		dobField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		usernameField = new JTextField();
+		usernameField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		passwordField = new JTextField();
+		passwordField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		
 		saveButton = new JButton("Save");
 		cancelButton = new JButton("Cancel");
@@ -72,16 +80,16 @@ public class EditProfilePanel extends JPanel {
 		//bounds				
 		titleLabel.setBounds(0, 25, 450, 20);
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		nameLabel.setBounds(172, 75, 45, 20);
+		nameLabel.setBounds(0, 70, 215, 30);
 		nameField.setBounds(225, 70, 110, 30);
-		dobLabel.setBounds(179, 105, 38, 20);
-		dobField.setBounds(225, 100, 110, 30);
-		usernameLabel.setBounds(144, 135, 73, 20);
-		usernameField.setBounds(225, 130, 110, 30);
-		passwordLabel.setBounds(149, 165, 68, 20);
-		passwordField.setBounds(225, 160, 110, 30);
-		saveButton.setBounds(133, 375, 110, 20);
-		cancelButton.setBounds(263, 375, 110, 20);
+		dobLabel.setBounds(0, 111, 220, 30);
+		dobField.setBounds(225, 111, 110, 30);
+		usernameLabel.setBounds(0, 193, 220, 30);
+		usernameField.setBounds(225, 152, 110, 30);
+		passwordLabel.setBounds(0, 152, 220, 30);
+		passwordField.setBounds(225, 193, 110, 30);
+		saveButton.setBounds(75, 300, 300, 40);
+		cancelButton.setBounds(75, 350, 300, 40);
 		
 		
 		// add all

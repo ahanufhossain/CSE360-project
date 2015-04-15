@@ -60,7 +60,7 @@ public class DoctorProfilePanel extends JPanel {
 		
 		btnSeePatientDetails = new JButton("See Patient Details");
 		btnSeePatientDetails.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnSeePatientDetails.setBounds(75, 248, 300, 40);
+		btnSeePatientDetails.setBounds(75, 275, 300, 40);
 		add(btnSeePatientDetails);
 		
 		btnAddPatient = new JButton("Add Patient");
@@ -69,12 +69,12 @@ public class DoctorProfilePanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnAddPatient.setBounds(75, 326, 300, 40);
+		btnAddPatient.setBounds(75, 325, 300, 40);
 		add(btnAddPatient);
 		
 		btnEditProfile = new JButton("Edit Profile");
 		btnEditProfile.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnEditProfile.setBounds(75, 402, 300, 40);
+		btnEditProfile.setBounds(75, 375, 300, 40);
 		add(btnEditProfile);
 	}
 }

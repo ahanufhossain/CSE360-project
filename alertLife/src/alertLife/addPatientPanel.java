@@ -45,7 +45,7 @@ public class addPatientPanel extends JPanel {
 		
 		JButton btnAddPatient = new JButton("Add Patient");
 		btnAddPatient.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnAddPatient.setBounds(161, 423, 137, 23);
+		btnAddPatient.setBounds(75, 420, 300, 40);
 		add(btnAddPatient);
 		
 		JList patientList = new JList();
