@@ -40,6 +40,7 @@ public class PatientProfilePanel extends JPanel {
 	String[] patHistory = new String[] {"History1", "History2", "History3", "History4", "History5", "History6", "History7", "History8", "History9", "History10", "History11", "History12"};
 	JButton patProfileBackButton;
 	JTextPane diagnosisDisplayPane;
+	JList patHistoryList;
 	
 	public PatientProfilePanel() {
 		setBackground(Color.LIGHT_GRAY);
@@ -96,7 +97,7 @@ public class PatientProfilePanel extends JPanel {
 		JScrollPane patHistoryScrollPane = new JScrollPane();
 		patHistoryScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);		
 		patHistoryScrollPane.setBounds(20, 200, 200, 210);
-		JList patHistoryList = new JList(patHistory);
+		patHistoryList = new JList(patHistory);
 		patHistoryList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		patHistoryList.setModel(new AbstractListModel()
 		{

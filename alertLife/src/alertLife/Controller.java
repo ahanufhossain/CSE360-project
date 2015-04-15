@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.swing.JFrame;
+import javax.swing.JList;
 
 
 public class Controller extends JFrame implements ActionListener
@@ -190,6 +191,7 @@ public class Controller extends JFrame implements ActionListener
 				if(currentUser.userType.equals("Doctor"))
 				{
 					frame.getContentPane().removeAll();
+					updateDoctorProfilePanel();
 					frame.getContentPane().add(docPage);
 					frame.setVisible(true);
 					frame.repaint();
@@ -197,6 +199,7 @@ public class Controller extends JFrame implements ActionListener
 				else
 				{
 					frame.getContentPane().removeAll();
+					updatePatientProfilePanel();
 					frame.getContentPane().add(patientPage);
 					frame.setVisible(true);
 					frame.repaint();
@@ -272,6 +275,7 @@ public class Controller extends JFrame implements ActionListener
 		if(e.getSource() == docPage.btnAddPatient)
 		{
 			frame.getContentPane().removeAll();
+			updateAddPatientPanel();
 			frame.getContentPane().add(addPatientPage);
 			frame.setVisible(true);
 			frame.repaint();
@@ -285,6 +289,7 @@ public class Controller extends JFrame implements ActionListener
 		if (e.getSource() == addPatientPage.btnBack)
 		{
 			frame.getContentPane().removeAll();
+			updateDoctorProfilePanel();
 			frame.getContentPane().add(docPage);
 			frame.setVisible(true);
 			frame.repaint();
@@ -297,6 +302,7 @@ public class Controller extends JFrame implements ActionListener
 			if(currentUser.userType.equals("Doctor"))
 			{
 				frame.getContentPane().removeAll();
+				updateDoctorProfilePanel();
 				frame.getContentPane().add(docPage);
 				frame.setVisible(true);
 				frame.repaint();
@@ -304,6 +310,7 @@ public class Controller extends JFrame implements ActionListener
 			else
 			{
 				frame.getContentPane().removeAll();
+				updatePatientProfilePanel();
 				frame.getContentPane().add(patientPage);
 				frame.setVisible(true);
 				frame.repaint();
@@ -316,6 +323,7 @@ public class Controller extends JFrame implements ActionListener
 			if(currentUser.userType.equals("Doctor"))
 			{
 				frame.getContentPane().removeAll();
+				updateDoctorProfilePanel();
 				frame.getContentPane().add(docPage);
 				frame.setVisible(true);
 				frame.repaint();
@@ -323,6 +331,7 @@ public class Controller extends JFrame implements ActionListener
 			else
 			{
 				frame.getContentPane().removeAll();
+				updatePatientProfilePanel();
 				frame.getContentPane().add(patientPage);
 				frame.setVisible(true);
 				frame.repaint();
@@ -345,16 +354,72 @@ public class Controller extends JFrame implements ActionListener
 			frame.repaint();
 		}
 		//navigates from new entry back to patient page
-		//needs to also get info from the entry and
-		//add it to the patients history
 		if(e.getSource() == newEntryPage.btnBack)
 		{
 			frame.getContentPane().removeAll();
+			updatePatientProfilePanel();
 			frame.getContentPane().add(patientPage);
 			frame.setVisible(true);
 			frame.repaint();
 		}
 		
+		//save the diagnosis entry
+		//needs to also get info from the entry and
+		//add it to the patients history
+		//navigates back to the patient page
+		if(e.getSource() == newEntryPage.btnSaveEntry)
+		{
+			//TODO
+			
+			frame.getContentPane().removeAll();
+			updatePatientProfilePanel();
+			frame.getContentPane().add(patientPage);
+			frame.setVisible(true);
+			frame.repaint();
+		}
+		
+	}
+	
+	//returns the patient history as a string array
+	public String[] getPatHistoryList()
+	{
+		//TODO
+		return new String[] {"fix this"};
+	}
+	
+	//updates all of the variables on the patient page 
+	public void updatePatientProfilePanel()
+	{
+		patientPage.patHistoryList = new JList<String>(getPatHistoryList());
+		//TODO
+	}
+	
+	//returns the doctor's patients as a string array
+	public String[] getDocPatNamesList()
+	{
+		//TODO
+		return new String[] {"fix this"};
+	}	
+	
+	//updates all of the variables on the patient page 
+	public void updateDoctorProfilePanel()
+	{
+		docPage.docsPatList = new JList<String>(getDocPatNamesList());
+		//TODO
+	}
+	
+	//returns the all of the patients as a string array
+	public String[] getAllPatNamesList()
+	{
+		//TODO
+		return new String[] {"fix this"};
+	}
+	
+	//updates all of the variables on the add patient page 
+	public void updateAddPatientPanel()
+	{
+		addPatientPage.allPatList = new JList<String>(getAllPatNamesList());
+		//TODO
 	}
 	
 }

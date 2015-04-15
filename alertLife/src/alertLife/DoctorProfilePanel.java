@@ -20,8 +20,11 @@ import javax.swing.AbstractListModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
 import java.awt.Font;
+
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -32,6 +35,7 @@ public class DoctorProfilePanel extends JPanel {
 	JButton btnSeePatientDetails;
 	JButton btnAddPatient;
 	JButton btnEditProfile;
+	JList<String> docsPatList;
 	
 	public DoctorProfilePanel() {
 		setLayout(null);
@@ -39,7 +43,7 @@ public class DoctorProfilePanel extends JPanel {
 		JScrollPane doscPatScrollPane = new JScrollPane();
 		doscPatScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		doscPatScrollPane.setBounds(75, 77, 300, 230);
-		JList docsPatList = new JList(docPatNames);
+		docsPatList = new JList(docPatNames);
 		docsPatList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		docsPatList.setModel(new AbstractListModel() {
 			public int getSize() {

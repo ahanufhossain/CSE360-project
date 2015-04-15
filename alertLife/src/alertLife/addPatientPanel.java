@@ -31,7 +31,7 @@ public class addPatientPanel extends JPanel {
 	
 	public JButton btnAddPatient;
 	public JButton btnBack;
-	public JList patientList;
+	public JList<String> allPatList;
 	String[] allPatNames = new String[] {"Paitent1", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8"};
 	
 	public addPatientPanel() {
