@@ -156,7 +156,7 @@ public class RegistrationPanel extends JPanel {
 		
 		btnBack = new JButton("Back");
 		btnBack.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnBack.setBounds(75, 349, 300, 40);
+		btnBack.setBounds(75, 350, 300, 40);
 		add(btnBack);
 		
 		groupButton();
