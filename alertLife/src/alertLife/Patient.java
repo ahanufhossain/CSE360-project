@@ -95,7 +95,9 @@ public class Patient extends User {
 		}//end debug mode
 				
 		String report;
-		report = "Pain: "; 
+		report = "Severity: ";
+		report += determineSeverity() + "\n";
+		report += "Pain: "; 
 		report += reported.getSymptom(1) + "\t\tNausea: " + reported.getSymptom(2) + "\tSleepiness: " + reported.getSymptom(3) + "\n";
 		report += "Fatgue: " + reported.getSymptom(4) + "\tDizziness: " + reported.getSymptom(5) + "\n";
 		report += "Comment: " + reported.getComment() + "\n";
@@ -112,6 +114,29 @@ public class Patient extends User {
 			return 0;
 		Diagnosis temp = diagnoses.get(diagnoses.size() - 1);//get last indexed diagnosis
 		return temp.getSymptom(1) + temp.getSymptom(2) + temp.getSymptom(3) + temp.getSymptom(4) + temp.getSymptom(5);
+	}
+	
+	/*************************determineProblematicState()***********************************/
+	//Description: returns a string that gives the level of problematicness of the patient's most recent entry.
+	//Assuming that our maximum priority level is 25, then 60% of 25 is 15 (problematic)
+	//and 80% of 25 is 20 (significantly problematic)
+	/*************************************************************************/
+	public String determineSeverity()
+	{
+		if(diagnoses.size() == 0) //if no new entries exist
+			return "Patient has no entries.";
+		if(getPriority() >= 20)
+		{
+			return "SIGNIFICANTLY PROBLEMATIC";
+		}
+		else if(getPriority() > 15)
+		{
+			return "Problematic";
+		}
+		else
+		{
+			return "Below the problematic threshold";
+		}
 	}
 
 }

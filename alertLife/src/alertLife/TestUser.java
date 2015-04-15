@@ -26,20 +26,13 @@ public class TestUser {
 		Patient seeker = new Patient("cheapscape", "d834jd(@!", "Today", "Bob Saggot");
 		Doctor wiseguy = new Doctor("supmario", "sd3$)(", "Tomorrow", "Mario Luigi");
 		
-		Diagnosis repo3 = new Diagnosis();
-		repo3.setSymptom(1, 1);
-		repo3.setSymptom(2, 2);
-		repo3.setSymptom(3, 3);
-		repo3.setSymptom(4, 4);
-		repo3.setSymptom(5, 5);
-		repo3.setComment("AINT NO BODY GOT TIME FOR THAT, I GOT BRONCHIDAS");
-		repo3.setDoctor("Dr. Mario");
+		Diagnosis repo3 = new Diagnosis(4, 4, 4, 4, 5, "AINT NO BODY GOT TIME FOR THAT, I GOT BRONCHIDAS", "Dr. Mario", "AD High Def");
 		System.out.println("Symptom 1:" + repo3.getSymptom(1) + "\t Symptom 2: " + repo3.getSymptom(2)
 				+ "\t Symptom 3: " + repo3.getSymptom(3)+ "\t Symptom 3: " + repo3.getSymptom(3)
 				+ "\t Symptom 4: " + repo3.getSymptom(4) + "\t Symptom 5: " + repo3.getSymptom(5)
 				+ "\nComment: " + repo3.getComment() + "\t Doctor: " + repo3.getDoctor());
 		Diagnosis repo = new Diagnosis();
-		Diagnosis repo2 = new Diagnosis(5, 2, 1, 1, 1, "I wanna be the very best, like no one ever was", "Prof Oak");
+		Diagnosis repo2 = new Diagnosis(5, 5, 5, 1, 1, "I wanna be the very best, like no one ever was", "Prof Oak", "Delusion");
 		Patient ashkecha = new Patient("akecha", "pikachu", "10 for Life", "Ash Kecham");
 		Patient tyrone = new Patient("TRone", "dsf3dsf", "Everyday", "Tyrone");
 	
