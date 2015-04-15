@@ -64,6 +64,7 @@ public class Controller extends JFrame implements ActionListener
 		login.btnLogin.addActionListener(this);
 		login.btnRegister.addActionListener(this);
 		registerPage.btnRegister.addActionListener(this);
+		registerPage.btnBack.addActionListener(this);
 		docPage.btnEditProfile.addActionListener(this);
 		docPage.btnAddPatient.addActionListener(this);
 		docPage.btnSeePatientDetails.addActionListener(this);
@@ -244,6 +245,14 @@ public class Controller extends JFrame implements ActionListener
 				save();
 			}
 			
+			frame.getContentPane().removeAll();
+			frame.getContentPane().add(login);
+			frame.setVisible(true);
+			frame.repaint();
+		}
+		// goes back to login page
+		if(e.getSource() == registerPage.btnBack)
+		{
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(login);
 			frame.setVisible(true);
