@@ -56,7 +56,7 @@ public class LoginScreenPanel extends JPanel {
 		
 		btnLogin = new JButton("Login");
 		btnLogin.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnLogin.setBounds(75, 300, 300, 40);
+		btnLogin.setBounds(75, 399, 300, 40);
 		add(btnLogin);
 		
 		btnRegister = new JButton("Register");
@@ -65,7 +65,7 @@ public class LoginScreenPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnRegister.setBounds(75, 350, 300, 40);
+		btnRegister.setBounds(75, 449, 300, 40);
 		add(btnRegister);
 
 	}

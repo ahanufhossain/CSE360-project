@@ -14,10 +14,12 @@
 package alertLife;
 
 import javax.swing.JPanel;
+
 import javax.swing.JLabel;
 
 import java.awt.Font;
 
+import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
@@ -27,6 +29,7 @@ import java.awt.Choice;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import static javax.swing.ScrollPaneConstants.*;
 
 public class NewEntryPanel extends JPanel {
 
@@ -50,7 +53,7 @@ public class NewEntryPanel extends JPanel {
 		add(lblDiagnosis);
 		
 		pSlider = new JSlider();
-		pSlider.setBounds(120, 100, 210, 30);
+		pSlider.setBounds(165, 100, 210, 30);
 		pSlider.setSnapToTicks(true);
 		pSlider.setMajorTickSpacing(1);
 		pSlider.setMaximum(5);
@@ -58,7 +61,7 @@ public class NewEntryPanel extends JPanel {
 		add(pSlider);
 		
 		nSlider = new JSlider();
-		nSlider.setBounds(120, 140, 210, 30);
+		nSlider.setBounds(165, 140, 210, 30);
 		nSlider.setSnapToTicks(true);
 		nSlider.setMajorTickSpacing(1);
 		nSlider.setMaximum(5);
@@ -66,7 +69,7 @@ public class NewEntryPanel extends JPanel {
 		add(nSlider);
 		
 		sSlider = new JSlider();
-		sSlider.setBounds(120, 180, 210, 30);
+		sSlider.setBounds(165, 180, 210, 30);
 		sSlider.setSnapToTicks(true);
 		sSlider.setMajorTickSpacing(1);
 		sSlider.setMaximum(5);
@@ -74,7 +77,7 @@ public class NewEntryPanel extends JPanel {
 		add(sSlider);
 		
 		fSlider = new JSlider();
-		fSlider.setBounds(120, 220, 210, 30);
+		fSlider.setBounds(165, 220, 210, 30);
 		fSlider.setSnapToTicks(true);
 		fSlider.setMajorTickSpacing(1);
 		fSlider.setMaximum(5);
@@ -82,7 +85,7 @@ public class NewEntryPanel extends JPanel {
 		add(fSlider);
 		
 		dSlider = new JSlider();
-		dSlider.setBounds(120, 260, 210, 50);
+		dSlider.setBounds(165, 260, 210, 50);
 		dSlider.setSnapToTicks(true);
 		dSlider.setMajorTickSpacing(1);
 		dSlider.setMaximum(5);
@@ -94,38 +97,40 @@ public class NewEntryPanel extends JPanel {
 		JLabel lblPain = new JLabel("Pain:");
 		lblPain.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblPain.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblPain.setBounds(0, 100, 110, 30);
+		lblPain.setBounds(0, 100, 150, 30);
 		add(lblPain);
 		
 		JLabel lblNausea = new JLabel("Nausea:");
 		lblNausea.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNausea.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblNausea.setBounds(0, 140, 110, 30);
+		lblNausea.setBounds(0, 140, 150, 30);
 		add(lblNausea);
 		
 		JLabel lblDizziness = new JLabel("Dizziness:");
 		lblDizziness.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblDizziness.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblDizziness.setBounds(0, 260, 110, 30);
+		lblDizziness.setBounds(0, 260, 150, 30);
 		add(lblDizziness);
 		
 		JLabel lblSleepiness = new JLabel("Sleepiness:");
 		lblSleepiness.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblSleepiness.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblSleepiness.setBounds(0, 180, 110, 30);
+		lblSleepiness.setBounds(0, 180, 150, 30);
 		add(lblSleepiness);
 		
 		JLabel lblFatigue = new JLabel("Fatigue:");
 		lblFatigue.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblFatigue.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblFatigue.setBounds(0, 220, 110, 30);
+		lblFatigue.setBounds(0, 220, 150, 30);
 		add(lblFatigue);
 		
 		enterComments = new JTextPane();
+		JScrollPane jsp = new JScrollPane(enterComments);
+		jsp.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
 		enterComments.setText("Enter Additional Information...");
-		enterComments.setBounds(75, 345, 300, 91);
+		jsp.setBounds(75, 345, 300, 91);
 		enterComments.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		add(enterComments);
+		add(jsp);
 		
 		JLabel lblComments = new JLabel("Comments:");
 		lblComments.setHorizontalAlignment(SwingConstants.CENTER);
@@ -133,8 +138,8 @@ public class NewEntryPanel extends JPanel {
 		lblComments.setBounds(0, 311, 450, 34);
 		add(lblComments);
 		
-		entryButton = new JButton("Complete Entry");
-		entryButton.setBounds(75, 447, 300, 40);
+		entryButton = new JButton("Back");
+		entryButton.setBounds(265, 447, 110, 40);
 		entryButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		add(entryButton);
 		
@@ -143,5 +148,10 @@ public class NewEntryPanel extends JPanel {
 		comboBox.setModel(new DefaultComboBoxModel(diagnosisNames));
 		comboBox.setBounds(75, 60, 300, 30);
 		add(comboBox);		
+		
+		JButton button = new JButton("Complete Entry");
+		button.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		button.setBounds(75, 447, 180, 40);
+		add(button);
 	}
 }

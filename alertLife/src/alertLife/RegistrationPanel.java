@@ -45,6 +45,7 @@ public class RegistrationPanel extends JPanel {
 	JRadioButton rdbtnPatient;
 	JComboBox<?> comboBoxMonth;
 	JComboBox<?> comboBoxDay;
+	private JButton button;
 
 	/**
 	 * Create the panel.
@@ -145,13 +146,18 @@ public class RegistrationPanel extends JPanel {
 		rdbtnPatient.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnPatient.setBackground(Color.LIGHT_GRAY);
 		rdbtnPatient.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		rdbtnPatient.setBounds(0, 324, 450, 30);
+		rdbtnPatient.setBounds(0, 314, 450, 29);
 		add(rdbtnPatient);
 		
 		btnRegister = new JButton("Register");
 		btnRegister.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnRegister.setBounds(75, 400, 300, 40);
 		add(btnRegister);
+		
+		button = new JButton("Back");
+		button.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		button.setBounds(75, 349, 300, 40);
+		add(button);
 		
 		groupButton();
 
