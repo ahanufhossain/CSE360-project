@@ -39,7 +39,8 @@ public class NewEntryPanel extends JPanel {
 	JSlider fSlider;
 	JSlider dSlider;
 	JTextPane enterComments;
-	JButton entryButton;
+	JButton btnBack;
+	JButton btnSaveEntry;
 	String[] diagnosisNames = new String[] {"Urothelial Carcinoma", "Ductal Carcinoma", "Colorectal Polyps", "Leukemia", "Melanoma", "Ulcerative Colitis"};
 	
 	public NewEntryPanel() 
@@ -138,10 +139,10 @@ public class NewEntryPanel extends JPanel {
 		lblComments.setBounds(0, 311, 450, 34);
 		add(lblComments);
 		
-		entryButton = new JButton("Back");
-		entryButton.setBounds(265, 447, 110, 40);
-		entryButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		add(entryButton);
+		btnBack = new JButton("Back");
+		btnBack.setBounds(265, 447, 110, 40);
+		btnBack.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		add(btnBack);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
@@ -149,9 +150,9 @@ public class NewEntryPanel extends JPanel {
 		comboBox.setBounds(75, 60, 300, 30);
 		add(comboBox);		
 		
-		JButton button = new JButton("Complete Entry");
-		button.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		button.setBounds(75, 447, 180, 40);
-		add(button);
+		btnSaveEntry = new JButton("Complete Entry");
+		btnSaveEntry.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		btnSaveEntry.setBounds(75, 447, 180, 40);
+		add(btnSaveEntry);
 	}
 }

@@ -72,7 +72,8 @@ public class Controller extends JFrame implements ActionListener
 		patientPage.btnNewEntry.addActionListener(this);
 		editProfile.saveButton.addActionListener(this);
 		editProfile.cancelButton.addActionListener(this);
-		newEntryPage.entryButton.addActionListener(this);
+		newEntryPage.btnBack.addActionListener(this);
+		newEntryPage.btnSaveEntry.addActionListener(this);
 		addPatientPage.btnBack.addActionListener(this);
 		
 		frame = new JFrame();
@@ -346,7 +347,7 @@ public class Controller extends JFrame implements ActionListener
 		//navigates from new entry back to patient page
 		//needs to also get info from the entry and
 		//add it to the patients history
-		if(e.getSource() == newEntryPage.entryButton)
+		if(e.getSource() == newEntryPage.btnBack)
 		{
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(patientPage);
