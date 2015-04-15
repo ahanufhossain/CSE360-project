@@ -14,7 +14,6 @@
 package alertLife;
 
 import javax.swing.JPanel;
-
 import javax.swing.JLabel;
 
 import java.awt.Font;
@@ -29,6 +28,7 @@ import java.awt.Choice;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+
 import static javax.swing.ScrollPaneConstants.*;
 
 public class NewEntryPanel extends JPanel {
@@ -42,6 +42,7 @@ public class NewEntryPanel extends JPanel {
 	JButton btnBack;
 	JButton btnSaveEntry;
 	String[] diagnosisNames = new String[] {"Urothelial Carcinoma", "Ductal Carcinoma", "Colorectal Polyps", "Leukemia", "Melanoma", "Ulcerative Colitis"};
+	JComboBox<String> diagnosesComboBox;
 	
 	public NewEntryPanel() 
 	{
@@ -144,11 +145,11 @@ public class NewEntryPanel extends JPanel {
 		btnBack.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		add(btnBack);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		comboBox.setModel(new DefaultComboBoxModel(diagnosisNames));
-		comboBox.setBounds(75, 60, 300, 30);
-		add(comboBox);		
+		diagnosesComboBox = new JComboBox<String>();
+		diagnosesComboBox.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		diagnosesComboBox.setModel(new DefaultComboBoxModel(diagnosisNames));
+		diagnosesComboBox.setBounds(75, 60, 300, 30);
+		add(diagnosesComboBox);		
 		
 		btnSaveEntry = new JButton("Complete Entry");
 		btnSaveEntry.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));

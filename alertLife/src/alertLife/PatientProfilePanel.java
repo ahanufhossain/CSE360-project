@@ -34,7 +34,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
 public class PatientProfilePanel extends JPanel {
-
+	//private static final long serialVersionUID = 1L;
 	JButton btnEditProfile;
 	JButton btnNewEntry;
 	String[] patHistory = new String[] {"History1", "History2", "History3", "History4", "History5", "History6", "History7", "History8", "History9", "History10", "History11", "History12"};
@@ -100,6 +100,10 @@ public class PatientProfilePanel extends JPanel {
 		patHistoryList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		patHistoryList.setModel(new AbstractListModel()
 		{
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
 			public int getSize()
 			{
 				return patHistory.length;
