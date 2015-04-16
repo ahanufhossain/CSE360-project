@@ -24,8 +24,7 @@ public class Diagnosis {
 	private int symptom4;
 	private int symptom5;
 	private String comment;
-	private String doctor;
-	private String diagnosisName;
+	private String diagnosisName = "";
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	private Date date = new Date();
 	private String dateTime;
@@ -38,10 +37,9 @@ public class Diagnosis {
 		symptom4 = 0;
 		symptom5 = 0;
 		comment = "";
-		doctor = "";
 	}
 	
-	public Diagnosis(int symp1, int symp2, int symp3, int symp4, int symp5, String com, String doc, String dName)
+	public Diagnosis(int symp1, int symp2, int symp3, int symp4, int symp5, String com, String dName)
 	{
 		symptom1 = symp1;
 		symptom2 = symp2;
@@ -49,7 +47,6 @@ public class Diagnosis {
 		symptom4 = symp4;
 		symptom5 = symp5;
 		comment = com;
-		doctor = doc;
 		diagnosisName = dName;
 		dateTime = dateFormat.format(date);
 	}
@@ -69,11 +66,6 @@ public class Diagnosis {
 	public String getComment()
 	{
 		return comment;
-	}
-	
-	public String getDoctor()
-	{
-		return doctor;
 	}
 	
 	public String getDiagnosisName()
@@ -101,7 +93,6 @@ public class Diagnosis {
 	public String toString()
 	{
 		return "Diagnosis:\t" + diagnosisName + "\n" +
-				"Doctor:\t" + doctor + "\n" +
 				"Pain:\t" + symptom1 + "\n" + 
 				"Nausea:\t" + symptom1 + "\n" + 
 				"Sleepiness:\t" + symptom1 + "\n" + 

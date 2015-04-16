@@ -51,7 +51,6 @@ public class Controller extends JFrame implements ActionListener
 	
 	public void init()
 	{
-		//initialize arrayList and currentUser
 		currentUser = new User();
 		listOfUsers = new ArrayList<User>();
 		load();
@@ -87,7 +86,6 @@ public class Controller extends JFrame implements ActionListener
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
-		
 	}
 	
 	//the purpose of this method will be to update the information
@@ -166,6 +164,14 @@ public class Controller extends JFrame implements ActionListener
 				{
 					flag = true;
 					currentUser = listOfUsers.get(i); //sets current user
+					if(currentUser.userType.equals("Patient"))
+					{
+						currentPatient = (Patient) listOfUsers.get(i);
+					}
+					else //currentUser.userType.equals("Doctor")
+					{
+						currentDoctor = (Doctor)listOfUsers.get(i);
+					}
 					indexOfCurrentUser = i; //sets index for current user
 					break;
 				}
@@ -194,29 +200,18 @@ public class Controller extends JFrame implements ActionListener
 			{
 				if(currentUser.userType.equals("Doctor"))
 				{
-					frame.getContentPane().removeAll();
-					updateDoctorProfilePanel();
-					frame.getContentPane().add(docPage);
-					frame.setVisible(true);
-					frame.repaint();
+					goToDoctorProfilePanel();
 				}
 				else
 				{
-					frame.getContentPane().removeAll();
-					updatePatientProfilePanel();
-					frame.getContentPane().add(patientPage);
-					frame.setVisible(true);
-					frame.repaint();
+					goToPatientProfilePanel();
 				}
 			}
 		}
 		//brings user to the registration page
 		if(e.getSource() == login.btnRegister)
 		{
-			frame.getContentPane().removeAll();
-			frame.getContentPane().add(registerPage);
-			frame.setVisible(true);
-			frame.repaint();
+			goToRegister();
 		}
 		//brings user back to login in page after registering
 		//needs to create new user this will be implemented later
@@ -254,49 +249,33 @@ public class Controller extends JFrame implements ActionListener
 				save();
 			}
 			
-			frame.getContentPane().removeAll();
-			frame.getContentPane().add(login);
-			frame.setVisible(true);
-			frame.repaint();
+			goToLogin();
 		}
 		// goes back to login page
 		if(e.getSource() == registerPage.btnBack)
 		{
-			frame.getContentPane().removeAll();
-			frame.getContentPane().add(login);
-			frame.setVisible(true);
-			frame.repaint();
+			goToLogin();
 		}
 		//navigates from doctor page to edit profile page
 		if(e.getSource() == docPage.btnEditProfile)
 		{
-			frame.getContentPane().removeAll();
-			frame.getContentPane().add(editProfile);
-			frame.setVisible(true);
-			frame.repaint();
+			goToEditProfile();
 		}
 		//navigates from doctor page to add patient page
 		if(e.getSource() == docPage.btnAddPatient)
 		{
-			frame.getContentPane().removeAll();
-			updateAddPatientPanel();
-			frame.getContentPane().add(addPatientPage);
-			frame.setVisible(true);
-			frame.repaint();
+			goToAddPatientPanel();
 		}
 		//there is no panel for this button at this time
 		if(e.getSource() == docPage.btnSeePatientDetails)
 		{
-			
+			//TODO
+			//goToPatientProfilePanel();
 		}
 		//navigates from add patient page to doc page
 		if (e.getSource() == addPatientPage.btnBack)
 		{
-			frame.getContentPane().removeAll();
-			updateDoctorProfilePanel();
-			frame.getContentPane().add(docPage);
-			frame.setVisible(true);
-			frame.repaint();
+			goToAddPatientPanel();
 		}
 		//navigates from edit profile back to doc page
 		//or patient page depending on user type
@@ -304,19 +283,11 @@ public class Controller extends JFrame implements ActionListener
 		{
 			if(currentUser.userType.equals("Doctor"))
 			{
-				frame.getContentPane().removeAll();
-				updateDoctorProfilePanel();
-				frame.getContentPane().add(docPage);
-				frame.setVisible(true);
-				frame.repaint();
+				goToDoctorProfilePanel();
 			}
 			else
 			{
-				frame.getContentPane().removeAll();
-				updatePatientProfilePanel();
-				frame.getContentPane().add(patientPage);
-				frame.setVisible(true);
-				frame.repaint();
+				goToPatientProfilePanel();
 			}
 		}
 		//navigates from edit profile back to doc page
@@ -325,45 +296,27 @@ public class Controller extends JFrame implements ActionListener
 		{
 			if(currentUser.userType.equals("Doctor"))
 			{
-				frame.getContentPane().removeAll();
-				updateDoctorProfilePanel();
-				frame.getContentPane().add(docPage);
-				frame.setVisible(true);
-				frame.repaint();
+				goToDoctorProfilePanel();
 			}
 			else
 			{
-				frame.getContentPane().removeAll();
-				updatePatientProfilePanel();
-				frame.getContentPane().add(patientPage);
-				frame.setVisible(true);
-				frame.repaint();
+				goToPatientProfilePanel();
 			}
 		}
 		//navigates from patient page to edit profile page
 		if(e.getSource() == patientPage.btnEditProfile)
 		{
-			frame.getContentPane().removeAll();
-			frame.getContentPane().add(editProfile);
-			frame.setVisible(true);
-			frame.repaint();
+			goToEditProfile();
 		}
 		//navigates from patient page to new entry page
 		if(e.getSource() == patientPage.btnNewEntry)
 		{
-			frame.getContentPane().removeAll();
-			frame.getContentPane().add(newEntryPage);
-			frame.setVisible(true);
-			frame.repaint();
+			goNewEntry();
 		}
 		//navigates from new entry back to patient page
 		if(e.getSource() == newEntryPage.btnBack)
 		{
-			frame.getContentPane().removeAll();
-			updatePatientProfilePanel();
-			frame.getContentPane().add(patientPage);
-			frame.setVisible(true);
-			frame.repaint();
+			goToPatientProfilePanel();
 		}
 		
 		//save the diagnosis entry
@@ -373,89 +326,164 @@ public class Controller extends JFrame implements ActionListener
 		if(e.getSource() == newEntryPage.btnSaveEntry)
 		{
 			//TODO
+			//Diagnosis(int symp1, int symp2, int symp3, int symp4, int symp5, String com, String dName)
+			currentPatient.addDiagnosis(new Diagnosis(newEntryPage.pSlider.getValue(),
+														newEntryPage.nSlider.getValue(), 
+														newEntryPage.sSlider.getValue(), 
+														newEntryPage.fSlider.getValue(), 
+														newEntryPage.dSlider.getValue(),
+														newEntryPage.enterComments.getText(),
+														newEntryPage.diagnosesComboBox.getSelectedItem().toString())
+														);
 			
-			frame.getContentPane().removeAll();
-			updatePatientProfilePanel();
-			frame.getContentPane().add(patientPage);
-			frame.setVisible(true);
-			frame.repaint();
+			goToPatientProfilePanel();
 		}
 		
 	}
 	
-//	//returns the patient history as a string array
-//	public String[] getPatHistoryList()
-//	{
-//		if (currentPatient.getDiagnoses().size() == 0)
-//		{
-//			return new String[] {"No diagnosis reported yet"};
-//		}
-//		else
-//		{
-//			ArrayList<String> patHistoryArrayList = new ArrayList<String>();
-//			for (int i = 0; i < currentPatient.getDiagnoses().size(); i++)
-//			{
-//				patHistoryArrayList.add(currentPatient.getDiagnoses().get(i).toShortString());
-//			}
-//			
-//			return patHistoryArrayList.toArray(new String[patHistoryArrayList.size()]);
-//		}
-//	}
-	
-	//updates all of the variables on the patient page 
-	public void updatePatientProfilePanel()
+	//updates all of the variables on the patient page
+	//goes to patient profile
+	public void goToPatientProfilePanel()
 	{
+		frame.getContentPane().removeAll();
+		patientPage.patHistory = getPatHistoryList();
+		patientPage.repaint();		
 		//TODO
-		//patientPage.patHistory = getPatHistoryList();
-		patientPage.patHistory = new String[] {"Fix this.", "And this"};
-		patientPage.repaint();
-		//TODO
+		
+		frame.getContentPane().add(patientPage);
+		frame.setVisible(true);
+		frame.repaint();
 	}
 	
-//	//returns the doctor's patients as a string array
-//	public String[] getDocPatNamesList()
-//	{
-//		ArrayList<String> docPatArrayList = new ArrayList<String>();
-//		for (int i = 0; i < currentDoctor.getPatientList().size(); i++)
-//		{
-//			docPatArrayList.add(currentDoctor.getPatientList().get(i).getName());
-//		}
-//		
-//		return docPatArrayList.toArray(new String[docPatArrayList.size()]);
-//	}	
-	
 	//updates all of the variables on the patient page 
-	public void updateDoctorProfilePanel()
+	//goes to doctor profile
+	public void goToDoctorProfilePanel()
 	{
-		//TODO
-		//docPage.docPatNames = getDocPatNamesList();
-		docPage.docPatNames = new String[] {"Fix this.", "And this"};
+		frame.getContentPane().removeAll();
+		
+		docPage.docPatNames = getDocPatNamesList();
+		//docPage.docPatNames = new String[] {"Fix this.", "And this"};
 		docPage.repaint();
 		//TODO
+		frame.getContentPane().add(docPage);
+		frame.setVisible(true);
+		frame.repaint();
 	}
 	
-	//returns the all of the patients as a string array
-	public String[] getAllPatNamesList()
+	//updates all of the variables on the add patient page
+	//goes to add patient page
+	public void goToAddPatientPanel()
 	{
-		ArrayList<String> allPatNamesArrayList = new ArrayList<String>();
-		for (int i = 0; i < listOfUsers.size(); i++)
-		{
-			allPatNamesArrayList.add(listOfUsers.get(i).getName());
-		}
-		
-		return allPatNamesArrayList.toArray(new String[allPatNamesArrayList.size()]);
-	}
-	
-	//updates all of the variables on the add patient page 
-	public void updateAddPatientPanel()
-	{
-		//TODO
+		frame.getContentPane().removeAll();
+
 		addPatientPage.allPatNames = getAllPatNamesList();
 		//addPatientPage.allPatNames = new String[] {"Fix this.", "And this"};
 		addPatientPage.repaint();
 		//TODO
+		
+		frame.getContentPane().add(addPatientPage);
+		frame.setVisible(true);
+		frame.repaint();
 	}
 	
+	//goes to add login page
+	public void goToLogin()
+	{
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(login);
+		login.repaint();
+		frame.setVisible(true);
+		frame.repaint();
+	}
+	
+	//goes to add register page
+	public void goToRegister()
+	{
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(registerPage);
+		frame.setVisible(true);
+		frame.repaint();
+	}
+
+	//goes to add edit profile page
+	public void goToEditProfile()
+	{
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(editProfile);
+		frame.setVisible(true);
+		frame.repaint();
+	}
+	
+	//goes to add new diagnosis entry page
+	public void goNewEntry()
+	{
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(newEntryPage);
+		frame.setVisible(true);
+		frame.repaint();
+	}
+
+
+	
+	//returns the patient history as a string array
+	public String[] getPatHistoryList()
+	{
+		if (currentPatient.getDiagnoses().size() == 0)
+		{
+			return new String[] {"No diagnosis reported yet"};
+		}
+		else
+		{
+			ArrayList<String> patHistoryArrayList = new ArrayList<String>();
+			for (int i = 0; i < currentPatient.getDiagnoses().size(); i++)
+			{
+				patHistoryArrayList.add(currentPatient.getDiagnoses().get(i).toShortString());
+			}
+			
+			return patHistoryArrayList.toArray(new String[patHistoryArrayList.size()]);
+		}
+	}
+	
+	//returns the doctor's patients as a string array
+	public String[] getDocPatNamesList()
+	{
+		if (currentDoctor.getPatientList().size() == 0)
+		{
+			return new String[] {"No patients added yet"};
+		}
+		else
+		{
+			ArrayList<String> docPatArrayList = new ArrayList<String>();
+			
+			for (int i = 0; i < currentDoctor.getPatientList().size(); i++)
+			{
+				docPatArrayList.add(currentDoctor.getPatientList().get(i).getName());
+			}
+			
+			return docPatArrayList.toArray(new String[docPatArrayList.size()]);
+		}
+	}	
+	
+	//returns the all of the patients as a string array
+	public String[] getAllPatNamesList()
+	{
+		if (listOfUsers.size() == 0)
+		{
+			return new String[] {"No patients yet"};
+		}
+		else
+		{		
+			ArrayList<String> allPatNamesArrayList = new ArrayList<String>();
+			for (int i = 0; i < listOfUsers.size(); i++)
+			{
+				//only display users that are patients
+				if (listOfUsers.get(i).userType.equals("Patient"))
+					allPatNamesArrayList.add(listOfUsers.get(i).getName());
+			}
+			
+			return allPatNamesArrayList.toArray(new String[allPatNamesArrayList.size()]);
+		}
+	}	
 }
 
 
