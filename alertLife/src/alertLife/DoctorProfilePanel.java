@@ -36,6 +36,7 @@ public class DoctorProfilePanel extends JPanel {
 	JButton btnAddPatient;
 	JButton btnEditProfile;
 	JList<String> docsPatList;
+	private Doctor currentUser;
 	
 	public DoctorProfilePanel() {
 		setLayout(null);
@@ -57,6 +58,9 @@ public class DoctorProfilePanel extends JPanel {
 		add(doscPatScrollPane);
 		
 		JLabel lblDoctorNamesProfile = new JLabel(doctorName + "'s Profile Page", SwingConstants.CENTER);
+		
+		if (currentUser != null)
+			lblDoctorNamesProfile = new JLabel(currentUser.name + "'s Profile Page", SwingConstants.CENTER);
 		lblDoctorNamesProfile.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		lblDoctorNamesProfile.setBounds(0, 27, 450, 39);
 		add(lblDoctorNamesProfile);
@@ -79,5 +83,14 @@ public class DoctorProfilePanel extends JPanel {
 		btnEditProfile.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnEditProfile.setBounds(75, 418, 300, 40);
 		add(btnEditProfile);
+	}
+	
+	public void setupDoctor(Doctor currentDoctor)
+	{
+		// set current user to the doctor
+		currentUser = currentDoctor;
+		
+		// add other information for panel
+		
 	}
 }

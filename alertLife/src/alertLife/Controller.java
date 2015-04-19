@@ -275,7 +275,7 @@ public class Controller extends JFrame implements ActionListener
 		//navigates from add patient page to doc page
 		if (e.getSource() == addPatientPage.btnBack)
 		{
-			goToAddPatientPanel();
+			goToDoctorProfilePanel();
 		}
 		//navigates from edit profile back to doc page
 		//or patient page depending on user type
@@ -363,6 +363,7 @@ public class Controller extends JFrame implements ActionListener
 		
 		docPage.docPatNames = getDocPatNamesList();
 		//docPage.docPatNames = new String[] {"Fix this.", "And this"};
+		docPage.setupDoctor(currentDoctor);
 		docPage.repaint();
 		//TODO
 		frame.getContentPane().add(docPage);
