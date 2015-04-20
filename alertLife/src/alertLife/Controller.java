@@ -355,15 +355,11 @@ public class Controller extends JFrame implements ActionListener
 		frame.repaint();
 	}
 	
-	//updates all of the variables on the patient page 
 	//goes to doctor profile
 	public void goToDoctorProfilePanel()
 	{
 		frame.getContentPane().removeAll();
-		
-		docPage.docPatNames = getDocPatNamesList();
-		//docPage.docPatNames = new String[] {"Fix this.", "And this"};
-		docPage.setupDoctor(currentDoctor);
+		docPage = new DoctorProfilePanel(currentDoctor);
 		docPage.repaint();
 		//TODO
 		frame.getContentPane().add(docPage);
