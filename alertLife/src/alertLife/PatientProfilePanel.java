@@ -43,7 +43,6 @@ public class PatientProfilePanel extends JPanel {
 	JTextPane diagnosisDisplayPane;
 	JList patHistoryList;
 	private Patient currentPatient;
-	private User currentUser;
 	
 	public PatientProfilePanel() {
 		setBackground(Color.LIGHT_GRAY);
@@ -133,10 +132,13 @@ public class PatientProfilePanel extends JPanel {
 		add(btnBack);
 	}
 	
-	public PatientProfilePanel(User currentUser, Patient currentPatient) {
+	public PatientProfilePanel(User currentUser, Patient currentPatient, ArrayList<User> userlist) {
 		this.currentPatient = currentPatient;
-		this.currentUser = currentUser;
 		this.patHistory = getPatHistoryList();
+		
+		// get patient's doctor
+		String doctorName = getDoctorName(userlist);
+		
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
@@ -161,7 +163,7 @@ public class PatientProfilePanel extends JPanel {
 		lblUsername.setBounds(250, 63, 151, 20);
 		add(lblUsername);
 		
-		JLabel lblDoctor = new JLabel("Doctor: ");
+		JLabel lblDoctor = new JLabel("Doctor: " + doctorName);
 		lblDoctor.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		lblDoctor.setBounds(250, 89, 151, 20);
 		add(lblDoctor);
@@ -230,6 +232,27 @@ public class PatientProfilePanel extends JPanel {
 			btnNewEntry.setBounds(125, 421, 200, 40);
 		}
 		add(btnNewEntry);
+	}
+	
+	// return name of current patient's doctor
+	private String getDoctorName(ArrayList<User> userlist)
+	{
+		String res = "";
+		String patientUsername = currentPatient.getUsername();
+		for (User user : userlist)
+		{
+			if (user instanceof Doctor)
+			{
+				Doctor doctor = (Doctor) user;
+				ArrayList<Patient> patientList = doctor.getPatientList();
+				for (Patient patient : patientList)
+				{
+					if (patient.getUsername().equals(patientUsername))
+						res = doctor.getName();
+				}
+			}
+		}
+		return res;
 	}
 	
 	//returns the patient history as a string array

@@ -44,12 +44,11 @@ public class Controller extends JFrame implements ActionListener
 	ArrayList<User> listOfUsers;
 	User currentUser;
 	//TODO can't access diagnosis without it being a patient instead of a current user
-	//TODO set current patient and doctor somewhere
 	Patient currentPatient;
 	Doctor currentDoctor;
 	Patient currentDoctorsPatient;
 	int indexOfCurrentUser; //needed to update the arraylist when users info is changed
-
+	
 	//get user by username from listOfUsers
 	private User getUser(String username)
 	{
@@ -343,6 +342,7 @@ public class Controller extends JFrame implements ActionListener
 			// add patient to current doctor's data set
 			String patientUsername = addPatientPage.getPatientUsername();
 			currentDoctor.addPatient((Patient) getUser(patientUsername));
+			updateAll();
 			save();
 			
 			// go to doctor profile panel
@@ -425,11 +425,11 @@ public class Controller extends JFrame implements ActionListener
 		
 		if (currentUser instanceof Patient)
 		{
-			patientPage = new PatientProfilePanel(currentUser, (Patient)currentUser);
+			patientPage = new PatientProfilePanel(currentUser, (Patient)currentUser, listOfUsers);
 		}
 		else
 		{
-			patientPage = new PatientProfilePanel(currentUser, currentDoctorsPatient);
+			patientPage = new PatientProfilePanel(currentUser, currentDoctorsPatient, listOfUsers);
 		}
 		addActionListeners(patientPage);
 		patientPage.repaint();
@@ -460,11 +460,7 @@ public class Controller extends JFrame implements ActionListener
 		
 		addPatientPage = new addPatientPanel(listOfUsers);
 		addActionListeners(addPatientPage);
-		
-		//addPatientPage.allPatNames = new String[] {"Fix this.", "And this"};
 		addPatientPage.repaint();
-		//TODO
-		
 		frame.getContentPane().add(addPatientPage);
 		frame.setVisible(true);
 		frame.repaint();
@@ -502,6 +498,8 @@ public class Controller extends JFrame implements ActionListener
 	public void goNewEntry()
 	{
 		frame.getContentPane().removeAll();
+		newEntryPage = new NewEntryPanel();
+		addActionListeners(newEntryPage);
 		frame.getContentPane().add(newEntryPage);
 		frame.setVisible(true);
 		frame.repaint();
