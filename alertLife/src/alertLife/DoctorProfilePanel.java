@@ -40,14 +40,15 @@ public class DoctorProfilePanel extends JPanel {
 	JList<String> docsPatList;
 	private Doctor currentUser;
 	JLabel lblDoctorNamesProfile;
+	JScrollPane docsPatScrollPane;
 	
 	// Display Example Doctor Profile Panel
 	public DoctorProfilePanel() {
 		setLayout(null);
 		
-		JScrollPane doscPatScrollPane = new JScrollPane();
-		doscPatScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		doscPatScrollPane.setBounds(75, 77, 300, 230);
+		docsPatScrollPane = new JScrollPane();
+		docsPatScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		docsPatScrollPane.setBounds(75, 77, 300, 230);
 		docsPatList = new JList(docPatNames);
 		docsPatList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		docsPatList.setModel(new AbstractListModel() {
@@ -58,8 +59,8 @@ public class DoctorProfilePanel extends JPanel {
 				return docPatNames[index];
 			}
 		});
-		doscPatScrollPane.setViewportView(docsPatList);
-		add(doscPatScrollPane);
+		docsPatScrollPane.setViewportView(docsPatList);
+		add(docsPatScrollPane);
 		
 		lblDoctorNamesProfile = new JLabel(doctorName + "'s Profile Page", SwingConstants.CENTER);
 		
