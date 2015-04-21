@@ -426,8 +426,10 @@ public class Controller extends JFrame implements ActionListener
 	public void goToAddPatientPanel()
 	{
 		frame.getContentPane().removeAll();
-
-		addPatientPage.allPatNames = getAllPatNamesList();
+		
+		addPatientPage = new addPatientPanel(listOfUsers);
+		addActionListeners(addPatientPage);
+		
 		//addPatientPage.allPatNames = new String[] {"Fix this.", "And this"};
 		addPatientPage.repaint();
 		//TODO
@@ -494,47 +496,6 @@ public class Controller extends JFrame implements ActionListener
 			return patHistoryArrayList.toArray(new String[patHistoryArrayList.size()]);
 		}
 	}
-	
-	//returns the doctor's patients as a string array
-	public String[] getDocPatNamesList()
-	{
-		if (currentDoctor.getPatientList().size() == 0)
-		{
-			return new String[] {"No patients added yet"};
-		}
-		else
-		{
-			ArrayList<String> docPatArrayList = new ArrayList<String>();
-			
-			for (int i = 0; i < currentDoctor.getPatientList().size(); i++)
-			{
-				docPatArrayList.add(currentDoctor.getPatientList().get(i).getName());
-			}
-			
-			return docPatArrayList.toArray(new String[docPatArrayList.size()]);
-		}
-	}	
-	
-	//returns the all of the patients as a string array
-	public String[] getAllPatNamesList()
-	{
-		if (listOfUsers.size() == 0)
-		{
-			return new String[] {"No patients yet"};
-		}
-		else
-		{		
-			ArrayList<String> allPatNamesArrayList = new ArrayList<String>();
-			for (int i = 0; i < listOfUsers.size(); i++)
-			{
-				//only display users that are patients
-				if (listOfUsers.get(i).userType.equals("Patient"))
-					allPatNamesArrayList.add(listOfUsers.get(i).getName());
-			}
-			
-			return allPatNamesArrayList.toArray(new String[allPatNamesArrayList.size()]);
-		}
-	}	
 }
 
 
