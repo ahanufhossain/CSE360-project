@@ -49,11 +49,16 @@ public class Controller extends JFrame implements ActionListener
 	Doctor currentDoctor;
 	int indexOfCurrentUser; //needed to update the arraylist when users info is changed
 
-	public void addDocPageListeners()
+	//get user by username from listOfUsers
+	private User getUser(String username)
 	{
-		docPage.btnEditProfile.addActionListener(this);
-		docPage.btnAddPatient.addActionListener(this);
-		docPage.btnSeePatientDetails.addActionListener(this);
+		User result = new User();
+		for (User user : listOfUsers)
+		{
+			if (user.getUsername().equals(username))
+				result = user;
+		}
+		return result;
 	}
 	
 	public void addActionListeners(JPanel panel)
@@ -62,6 +67,7 @@ public class Controller extends JFrame implements ActionListener
 		if (panel instanceof addPatientPanel)
 		{
 			addPatientPage.btnBack.addActionListener(this);
+			addPatientPage.btnAddPatient.addActionListener(this);
 		}
 		// DoctorProfilePanel
 		else if (panel instanceof DoctorProfilePanel)
@@ -118,20 +124,13 @@ public class Controller extends JFrame implements ActionListener
 		addPatientPage = new addPatientPanel();
 		
 		//add action listener to all necessary buttons
-		login.btnLogin.addActionListener(this);
-		login.btnRegister.addActionListener(this);
-		registerPage.btnRegister.addActionListener(this);
-		registerPage.btnBack.addActionListener(this);
-		docPage.btnEditProfile.addActionListener(this);
-		docPage.btnAddPatient.addActionListener(this);
-		docPage.btnSeePatientDetails.addActionListener(this);
-		patientPage.btnEditProfile.addActionListener(this);
-		patientPage.btnNewEntry.addActionListener(this);
-		editProfile.saveButton.addActionListener(this);
-		editProfile.cancelButton.addActionListener(this);
-		newEntryPage.btnBack.addActionListener(this);
-		newEntryPage.btnSaveEntry.addActionListener(this);
-		addPatientPage.btnBack.addActionListener(this);
+		addActionListeners(login);
+		addActionListeners(registerPage);
+		addActionListeners(docPage);
+		addActionListeners(patientPage);
+		addActionListeners(editProfile);
+		addActionListeners(newEntryPage);
+		addActionListeners(addPatientPage);
 		
 		frame = new JFrame();
 		frame.setSize(450,500);
@@ -328,6 +327,17 @@ public class Controller extends JFrame implements ActionListener
 		//navigates from add patient page to doc page
 		if (e.getSource() == addPatientPage.btnBack)
 		{
+			goToDoctorProfilePanel();
+		}
+		//navigates back to doc page from add patient page
+		//and adds patient to doctor's list of patients
+		if (e.getSource() == addPatientPage.btnAddPatient)
+		{
+			// add patient to current doctor's data set
+			String patientUsername = addPatientPage.getPatientUsername();
+			currentDoctor.addPatient((Patient) getUser(patientUsername));
+			
+			// go to doctor profile panel
 			goToDoctorProfilePanel();
 		}
 		//navigates from edit profile back to doc page

@@ -46,7 +46,7 @@ public class addPatientPanel extends JPanel {
 		lblPatients.setBounds(192, 11, 69, 39);
 		add(lblPatients);
 		
-		JButton btnAddPatient = new JButton("Add Patient");
+		btnAddPatient = new JButton("Add Patient");
 		btnAddPatient.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnAddPatient.setBounds(75, 420, 300, 40);
 		add(btnAddPatient);
@@ -88,7 +88,7 @@ public class addPatientPanel extends JPanel {
 		lblPatients.setBounds(192, 11, 69, 39);
 		add(lblPatients);
 		
-		JButton btnAddPatient = new JButton("Add Patient");
+		btnAddPatient = new JButton("Add Patient");
 		btnAddPatient.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnAddPatient.setBounds(75, 420, 300, 40);
 		add(btnAddPatient);
@@ -96,7 +96,7 @@ public class addPatientPanel extends JPanel {
 		JScrollPane allPatScrollPane = new JScrollPane();
 		allPatScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		allPatScrollPane.setBounds(75, 90, 300, 268);
-		JList allPatList = new JList(allPatNames);
+		allPatList = new JList(allPatNames);
 		allPatList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		allPatList.setModel(new AbstractListModel() {
 			public int getSize() {
@@ -113,6 +113,19 @@ public class addPatientPanel extends JPanel {
 		btnBack.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnBack.setBounds(75, 369, 300, 40);
 		add(btnBack);
+	}
+	
+	// return patient's username
+	public String getPatientUsername()
+	{
+		int index = allPatList.getSelectedIndex();
+		return patientUsernames.get(index);
+	}
+	
+	// return patient's name
+	public String getPatientName()
+	{
+		return allPatList.getSelectedValue();
 	}
 	
 	// stores usernames of all patients in patientUsernames and
