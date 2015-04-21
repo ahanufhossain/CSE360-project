@@ -28,6 +28,7 @@ import java.util.Arrays;
 
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JPanel;
 
 
 public class Controller extends JFrame implements ActionListener
@@ -48,6 +49,64 @@ public class Controller extends JFrame implements ActionListener
 	Doctor currentDoctor;
 	int indexOfCurrentUser; //needed to update the arraylist when users info is changed
 
+	//get user by username from listOfUsers
+	private User getUser(String username)
+	{
+		User result = new User();
+		for (User user : listOfUsers)
+		{
+			if (user.getUsername().equals(username))
+				result = user;
+		}
+		return result;
+	}
+	
+	public void addActionListeners(JPanel panel)
+	{
+		// addPatientPanel
+		if (panel instanceof addPatientPanel)
+		{
+			addPatientPage.btnBack.addActionListener(this);
+			addPatientPage.btnAddPatient.addActionListener(this);
+		}
+		// DoctorProfilePanel
+		else if (panel instanceof DoctorProfilePanel)
+		{
+			docPage.btnEditProfile.addActionListener(this);
+			docPage.btnAddPatient.addActionListener(this);
+			docPage.btnSeePatientDetails.addActionListener(this);
+		}
+		// EditProfilePanel
+		else if (panel instanceof EditProfilePanel)
+		{
+			editProfile.saveButton.addActionListener(this);
+			editProfile.cancelButton.addActionListener(this);
+		}
+		// LoginScreenPanel
+		else if (panel instanceof LoginScreenPanel)
+		{
+			login.btnLogin.addActionListener(this);
+			login.btnRegister.addActionListener(this);
+		}
+		// NewEntryPanel
+		else if (panel instanceof NewEntryPanel)
+		{
+			newEntryPage.btnBack.addActionListener(this);
+			newEntryPage.btnSaveEntry.addActionListener(this);
+		}
+		// PatientProfilePanel
+		else if (panel instanceof PatientProfilePanel)
+		{
+			patientPage.btnEditProfile.addActionListener(this);
+			patientPage.btnNewEntry.addActionListener(this);
+		}
+		// RegistrationPanel
+		else if (panel instanceof RegistrationPanel)
+		{
+			registerPage.btnRegister.addActionListener(this);
+			registerPage.btnBack.addActionListener(this);
+		}
+	}
 	
 	public void init()
 	{
@@ -65,20 +124,13 @@ public class Controller extends JFrame implements ActionListener
 		addPatientPage = new addPatientPanel();
 		
 		//add action listener to all necessary buttons
-		login.btnLogin.addActionListener(this);
-		login.btnRegister.addActionListener(this);
-		registerPage.btnRegister.addActionListener(this);
-		registerPage.btnBack.addActionListener(this);
-		docPage.btnEditProfile.addActionListener(this);
-		docPage.btnAddPatient.addActionListener(this);
-		docPage.btnSeePatientDetails.addActionListener(this);
-		patientPage.btnEditProfile.addActionListener(this);
-		patientPage.btnNewEntry.addActionListener(this);
-		editProfile.saveButton.addActionListener(this);
-		editProfile.cancelButton.addActionListener(this);
-		newEntryPage.btnBack.addActionListener(this);
-		newEntryPage.btnSaveEntry.addActionListener(this);
-		addPatientPage.btnBack.addActionListener(this);
+		addActionListeners(login);
+		addActionListeners(registerPage);
+		addActionListeners(docPage);
+		addActionListeners(patientPage);
+		addActionListeners(editProfile);
+		addActionListeners(newEntryPage);
+		addActionListeners(addPatientPage);
 		
 		frame = new JFrame();
 		frame.setSize(450,500);
@@ -280,6 +332,17 @@ public class Controller extends JFrame implements ActionListener
 		{
 			goToDoctorProfilePanel();
 		}
+		//navigates back to doc page from add patient page
+		//and adds patient to doctor's list of patients
+		if (e.getSource() == addPatientPage.btnAddPatient)
+		{
+			// add patient to current doctor's data set
+			String patientUsername = addPatientPage.getPatientUsername();
+			currentDoctor.addPatient((Patient) getUser(patientUsername));
+			
+			// go to doctor profile panel
+			goToDoctorProfilePanel();
+		}
 		//navigates from edit profile back to doc page
 		//or patient page depending on user type
 		if(e.getSource() == editProfile.saveButton)
@@ -363,10 +426,8 @@ public class Controller extends JFrame implements ActionListener
 	public void goToDoctorProfilePanel()
 	{
 		frame.getContentPane().removeAll();
-		
-		docPage.docPatNames = getDocPatNamesList();
-		//docPage.docPatNames = new String[] {"Fix this.", "And this"};
-		docPage.setupDoctor(currentDoctor);
+		docPage = new DoctorProfilePanel(currentDoctor);
+		addActionListeners(docPage);
 		docPage.repaint();
 		//TODO
 		frame.getContentPane().add(docPage);
@@ -379,8 +440,10 @@ public class Controller extends JFrame implements ActionListener
 	public void goToAddPatientPanel()
 	{
 		frame.getContentPane().removeAll();
-
-		addPatientPage.allPatNames = getAllPatNamesList();
+		
+		addPatientPage = new addPatientPanel(listOfUsers);
+		addActionListeners(addPatientPage);
+		
 		//addPatientPage.allPatNames = new String[] {"Fix this.", "And this"};
 		addPatientPage.repaint();
 		//TODO
@@ -447,47 +510,6 @@ public class Controller extends JFrame implements ActionListener
 			return patHistoryArrayList.toArray(new String[patHistoryArrayList.size()]);
 		}
 	}
-	
-	//returns the doctor's patients as a string array
-	public String[] getDocPatNamesList()
-	{
-		if (currentDoctor.getPatientList().size() == 0)
-		{
-			return new String[] {"No patients added yet"};
-		}
-		else
-		{
-			ArrayList<String> docPatArrayList = new ArrayList<String>();
-			
-			for (int i = 0; i < currentDoctor.getPatientList().size(); i++)
-			{
-				docPatArrayList.add(currentDoctor.getPatientList().get(i).getName());
-			}
-			
-			return docPatArrayList.toArray(new String[docPatArrayList.size()]);
-		}
-	}	
-	
-	//returns the all of the patients as a string array
-	public String[] getAllPatNamesList()
-	{
-		if (listOfUsers.size() == 0)
-		{
-			return new String[] {"No patients yet"};
-		}
-		else
-		{		
-			ArrayList<String> allPatNamesArrayList = new ArrayList<String>();
-			for (int i = 0; i < listOfUsers.size(); i++)
-			{
-				//only display users that are patients
-				if (listOfUsers.get(i).userType.equals("Patient"))
-					allPatNamesArrayList.add(listOfUsers.get(i).getName());
-			}
-			
-			return allPatNamesArrayList.toArray(new String[allPatNamesArrayList.size()]);
-		}
-	}	
 }
 
 
