@@ -1,15 +1,13 @@
-/***********************************************/
+/***************************************************************************************************************
 //Team #3
-//Team Members: 	(First 	Last)
-//					Emily 	Berk
+//Team Members: 	Emily 	Berk
 //					Parker 	Derks
 //					Ahanuf 	Hossains
 //					Adam 	Lew
 //					Josh	Owens
-
-//Description: 	This class implements the NewEntry panel which allows the patient to submit a new diagnosis.
-
-/***********************************************/
+//
+//Description: 		This class implements the NewEntry panel which allows the patient to submit a new diagnosis.
+/***************************************************************************************************************/
 
 package alertLife;
 
@@ -41,19 +39,23 @@ public class NewEntryPanel extends JPanel {
 	JTextPane enterComments;
 	JButton btnBack;
 	JButton btnSaveEntry;
-	String[] diagnosisNames = new String[] {"Urothelial Carcinoma", "Ductal Carcinoma", "Colorectal Polyps", "Leukemia", "Melanoma", "Ulcerative Colitis"};
+	String[] diagnosisNames = new String[] { "Urothelial Carcinoma", "Ductal Carcinoma", "Colorectal Polyps", "Leukemia", "Melanoma", "Ulcerative Colitis"};
 	JComboBox<String> diagnosesComboBox;
-	
-	public NewEntryPanel() 
-	{
+
+	/***************************************************************************************************************
+	//Function:		NewEntryPanel()
+	//
+	//Description:	Empty constructor for the New Diagnosis Entry Panel
+	/***************************************************************************************************************/
+	public NewEntryPanel() {
 		setLayout(null);
-		
+
 		JLabel lblDiagnosis = new JLabel("Diagnosis");
 		lblDiagnosis.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDiagnosis.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		lblDiagnosis.setBounds(0, 11, 450, 36);
 		add(lblDiagnosis);
-		
+
 		pSlider = new JSlider();
 		pSlider.setBounds(165, 100, 210, 30);
 		pSlider.setSnapToTicks(true);
@@ -61,7 +63,7 @@ public class NewEntryPanel extends JPanel {
 		pSlider.setMaximum(5);
 		pSlider.setValue(0);
 		add(pSlider);
-		
+
 		nSlider = new JSlider();
 		nSlider.setBounds(165, 140, 210, 30);
 		nSlider.setSnapToTicks(true);
@@ -69,7 +71,7 @@ public class NewEntryPanel extends JPanel {
 		nSlider.setMaximum(5);
 		nSlider.setValue(0);
 		add(nSlider);
-		
+
 		sSlider = new JSlider();
 		sSlider.setBounds(165, 180, 210, 30);
 		sSlider.setSnapToTicks(true);
@@ -77,7 +79,7 @@ public class NewEntryPanel extends JPanel {
 		sSlider.setMaximum(5);
 		sSlider.setValue(0);
 		add(sSlider);
-		
+
 		fSlider = new JSlider();
 		fSlider.setBounds(165, 220, 210, 30);
 		fSlider.setSnapToTicks(true);
@@ -85,7 +87,7 @@ public class NewEntryPanel extends JPanel {
 		fSlider.setMaximum(5);
 		fSlider.setValue(0);
 		add(fSlider);
-		
+
 		dSlider = new JSlider();
 		dSlider.setBounds(165, 260, 210, 50);
 		dSlider.setSnapToTicks(true);
@@ -95,37 +97,37 @@ public class NewEntryPanel extends JPanel {
 		dSlider.setValue(0);
 		dSlider.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		add(dSlider);
-		
+
 		JLabel lblPain = new JLabel("Pain:");
 		lblPain.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblPain.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		lblPain.setBounds(0, 100, 150, 30);
 		add(lblPain);
-		
+
 		JLabel lblNausea = new JLabel("Nausea:");
 		lblNausea.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNausea.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		lblNausea.setBounds(0, 140, 150, 30);
 		add(lblNausea);
-		
+
 		JLabel lblDizziness = new JLabel("Dizziness:");
 		lblDizziness.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblDizziness.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		lblDizziness.setBounds(0, 260, 150, 30);
 		add(lblDizziness);
-		
+
 		JLabel lblSleepiness = new JLabel("Sleepiness:");
 		lblSleepiness.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblSleepiness.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		lblSleepiness.setBounds(0, 180, 150, 30);
 		add(lblSleepiness);
-		
+
 		JLabel lblFatigue = new JLabel("Fatigue:");
 		lblFatigue.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblFatigue.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		lblFatigue.setBounds(0, 220, 150, 30);
 		add(lblFatigue);
-		
+
 		enterComments = new JTextPane();
 		JScrollPane jsp = new JScrollPane(enterComments);
 		jsp.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
@@ -133,24 +135,24 @@ public class NewEntryPanel extends JPanel {
 		jsp.setBounds(75, 340, 300, 80);
 		enterComments.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		add(jsp);
-		
+
 		JLabel lblComments = new JLabel("Comments:");
 		lblComments.setHorizontalAlignment(SwingConstants.CENTER);
 		lblComments.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		lblComments.setBounds(0, 306, 450, 34);
 		add(lblComments);
-		
+
 		btnBack = new JButton("Back");
 		btnBack.setBounds(265, 431, 110, 40);
 		btnBack.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		add(btnBack);
-		
+
 		diagnosesComboBox = new JComboBox<String>();
 		diagnosesComboBox.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		diagnosesComboBox.setModel(new DefaultComboBoxModel(diagnosisNames));
 		diagnosesComboBox.setBounds(75, 60, 300, 30);
-		add(diagnosesComboBox);		
-		
+		add(diagnosesComboBox);
+
 		btnSaveEntry = new JButton("Complete Entry");
 		btnSaveEntry.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnSaveEntry.setBounds(75, 431, 180, 40);

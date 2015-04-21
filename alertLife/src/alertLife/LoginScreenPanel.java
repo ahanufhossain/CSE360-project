@@ -1,3 +1,15 @@
+/***************************************************************************************************************
+//Team #3
+//Team Members: 	Emily 	Berk
+//					Parker 	Derks
+//					Ahanuf 	Hossains
+//					Adam 	Lew
+//					Josh	Owens
+//
+//Description: 		This class implements the LoginScreen panel, which lets a user login with their username and
+//					password or navigate to the registration page.
+/***************************************************************************************************************/
+
 package alertLife;
 
 import javax.swing.JPanel;
@@ -17,48 +29,51 @@ public class LoginScreenPanel extends JPanel {
 	JButton btnLogin;
 	JButton btnRegister;
 
-	/**
-	 * Create the panel.
-	 */
+	/***************************************************************************************************************
+	//Function:		LoginScreenPanel()
+	//
+	//Description:	Empty constructor for the Login Screen Panel
+	/***************************************************************************************************************/
 	public LoginScreenPanel() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		
+
 		JLabel lblLogin = new JLabel("Login");
 		lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLogin.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		lblLogin.setBounds(0, 85, 450, 26);
 		add(lblLogin);
-		
+
 		JLabel lblPassword = new JLabel("Password:");
 		lblPassword.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblPassword.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		lblPassword.setBounds(0, 190, 220, 30);
 		add(lblPassword);
-		
+
 		JLabel lblUsername = new JLabel("Username:");
 		lblUsername.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblUsername.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		lblUsername.setBounds(0, 150, 220, 30);
 		add(lblUsername);
-		
+
 		fieldUsername = new JTextField();
 		fieldUsername.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		fieldUsername.setToolTipText("10 Characters or less, no special characters.");
+		fieldUsername
+				.setToolTipText("10 Characters or less, no special characters.");
 		fieldUsername.setBounds(225, 150, 110, 30);
 		add(fieldUsername);
 		fieldUsername.setColumns(10);
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		passwordField.setBounds(225, 190, 110, 30);
 		add(passwordField);
-		
+
 		btnLogin = new JButton("Login");
 		btnLogin.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnLogin.setBounds(75, 350, 300, 40);
 		add(btnLogin);
-		
+
 		btnRegister = new JButton("Register");
 		btnRegister.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnRegister.addActionListener(new ActionListener() {
@@ -67,6 +82,5 @@ public class LoginScreenPanel extends JPanel {
 		});
 		btnRegister.setBounds(75, 400, 300, 40);
 		add(btnRegister);
-
 	}
 }

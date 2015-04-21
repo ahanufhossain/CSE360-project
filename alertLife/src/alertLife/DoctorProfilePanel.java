@@ -1,15 +1,14 @@
-/***********************************************/
+/***************************************************************************************************************
 //Team #3
-//Team Members: 	(First 	Last)
-//					Emily 	Berk
+//Team Members: 	Emily 	Berk
 //					Parker 	Derks
 //					Ahanuf 	Hossains
 //					Adam 	Lew
 //					Josh	Owens
-
-//Description: 	This class implements the DoctorProfilePage panel, which allows the doctor to select a patient, add a patient, or change their information.
-
-/***********************************************/
+//
+//Description: 		This class implements the DoctorProfilePage panel, which allows the doctor to select a 
+//					patient, add a patient, or change their information.
+/***************************************************************************************************************/
 
 package alertLife;
 
@@ -43,7 +42,11 @@ public class DoctorProfilePanel extends JPanel {
 	JLabel lblDoctorNamesProfile;
 	private ArrayList<String> patientUsernames;
 
-	// Display Example Doctor Profile Panel
+	/***************************************************************************************************************
+	//Function:		DoctorProfilePanel()
+	//
+	//Description:	empty constructor for the Doctor Profile Panel
+	/***************************************************************************************************************/
 	public DoctorProfilePanel() {
 		setLayout(null);
 
@@ -92,7 +95,11 @@ public class DoctorProfilePanel extends JPanel {
 		add(btnEditProfile);
 	}
 
-	// Create new doctor profile panel to display doctor's info
+	/***************************************************************************************************************
+	//Function:		DoctorProfilePanel(Doctor currentDoctor)
+	//
+	//Description:	Constructor for the Doctor Profile Panel
+	/***************************************************************************************************************/
 	public DoctorProfilePanel(Doctor currentDoctor) {
 		setLayout(null);
 
@@ -145,18 +152,30 @@ public class DoctorProfilePanel extends JPanel {
 		add(btnEditProfile);
 	}
 
-	// return patient's username
+	/***************************************************************************************************************
+	//Function:		getPatientUsername()
+	//
+	//Description:	returns patient's username
+	/***************************************************************************************************************/
 	public String getPatientUsername() {
 		int index = docsPatList.getSelectedIndex();
 		return patientUsernames.get(index);
 	}
 
-	// return patient's name
+	/***************************************************************************************************************
+	//Function:		getPatientName()
+	//
+	//Description:	return patient's name
+	/***************************************************************************************************************/
 	public String getPatientName() {
 		return docsPatList.getSelectedValue();
 	}
 
-	// returns the doctor's patents as a string array
+	/***************************************************************************************************************
+	//Function:		getDocPatNamesList()
+	//
+	//Description:	returns the doctor's patents as a string array
+	/***************************************************************************************************************/
 	private String[] getDocPatNamesList() {
 		ArrayList<Patient> docPatList = currentDoctor.getPatientList();
 		if (docPatList.size() == 0)

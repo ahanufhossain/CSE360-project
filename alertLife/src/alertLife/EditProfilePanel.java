@@ -1,15 +1,14 @@
-/***********************************************/
+/***************************************************************************************************************
 //Team #3
-//Team Members: 	(First 	Last)
-//					Emily 	Berk
+//Team Members: 	Emily 	Berk
 //					Parker 	Derks
 //					Ahanuf 	Hossains
 //					Adam 	Lew
 //					Josh	Owens
-
-//Description: 	This class implements the EditProfile panel, which lets a user modify their name, date of birth, username, and password.
-
-/***********************************************/
+//
+//Description: 		This class implements the EditProfile panel, which lets a user modify their name, date of 
+//					birth, username, and password.
+/***************************************************************************************************************/
 
 package alertLife;
 
@@ -25,28 +24,30 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class EditProfilePanel extends JPanel {
-	
+
 	public JLabel titleLabel;
 	public JLabel nameLabel;
 	public JLabel dobLabel;
 	public JLabel usernameLabel;
 	public JLabel passwordLabel;
-	
+
 	public JTextField nameField;
 	public JTextField dobField;
 	public JTextField usernameField;
 	public JTextField passwordField;
-	
+
 	public JButton saveButton;
 	public JButton cancelButton;
-	
-	/**
-	 * Create the panel.
-	 */
+
+	/***************************************************************************************************************
+	//Function:		EditProfilePanel()
+	//
+	//Description:	Empty constructor for the Edit Profile Panel
+	/***************************************************************************************************************/
 	public EditProfilePanel() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		
+
 		titleLabel = new JLabel("Edit Profile");
 		nameLabel = new JLabel("Name: ");
 		nameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -56,7 +57,7 @@ public class EditProfilePanel extends JPanel {
 		usernameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		passwordLabel = new JLabel("Password: ");
 		passwordLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		
+
 		nameField = new JTextField();
 		nameField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		dobField = new JTextField();
@@ -65,10 +66,10 @@ public class EditProfilePanel extends JPanel {
 		usernameField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		passwordField = new JTextField();
 		passwordField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		
+
 		saveButton = new JButton("Save");
 		cancelButton = new JButton("Back");
-		
+
 		// set font for each component
 		titleLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		nameLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
@@ -77,9 +78,8 @@ public class EditProfilePanel extends JPanel {
 		passwordLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		saveButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		cancelButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		
-		
-		//bounds				
+
+		// bounds
 		titleLabel.setBounds(0, 55, 450, 20);
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		nameLabel.setBounds(0, 100, 215, 30);
@@ -92,8 +92,7 @@ public class EditProfilePanel extends JPanel {
 		passwordField.setBounds(225, 223, 110, 30);
 		saveButton.setBounds(75, 350, 300, 40);
 		cancelButton.setBounds(75, 400, 300, 40);
-		
-		
+
 		// add all
 		add(titleLabel);
 		add(nameLabel);
@@ -107,11 +106,16 @@ public class EditProfilePanel extends JPanel {
 		add(saveButton);
 		add(cancelButton);
 	}
-	
+
+	/***************************************************************************************************************
+	//Function:		EditProfilePanel(User currentUser)
+	//
+	//Description:	Constructor for the Edit Profile Panel
+	/***************************************************************************************************************/
 	public EditProfilePanel(User currentUser) {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		
+
 		titleLabel = new JLabel("Edit Profile");
 		nameLabel = new JLabel("Name: ");
 		nameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -121,7 +125,7 @@ public class EditProfilePanel extends JPanel {
 		usernameLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		passwordLabel = new JLabel("Password: ");
 		passwordLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		
+
 		nameField = new JTextField(currentUser.getName());
 		nameField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		dobField = new JTextField(currentUser.getDOB());
@@ -130,10 +134,10 @@ public class EditProfilePanel extends JPanel {
 		usernameField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		passwordField = new JTextField(currentUser.getPassword());
 		passwordField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		
+
 		saveButton = new JButton("Save");
 		cancelButton = new JButton("Back");
-		
+
 		// set font for each component
 		titleLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		nameLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
@@ -142,8 +146,8 @@ public class EditProfilePanel extends JPanel {
 		passwordLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		saveButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		cancelButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		
-		//bounds				
+
+		// bounds
 		titleLabel.setBounds(0, 55, 450, 20);
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		nameLabel.setBounds(0, 100, 215, 30);
@@ -156,8 +160,7 @@ public class EditProfilePanel extends JPanel {
 		passwordField.setBounds(225, 182, 110, 30);
 		saveButton.setBounds(75, 350, 300, 40);
 		cancelButton.setBounds(75, 400, 300, 40);
-		
-		
+
 		// add all
 		add(titleLabel);
 		add(nameLabel);
@@ -171,10 +174,13 @@ public class EditProfilePanel extends JPanel {
 		add(saveButton);
 		add(cancelButton);
 	}
-	
-	// update user
-	public void UpdateUser(User currentUser)
-	{
+
+	/***************************************************************************************************************
+	//Function:		UpdateUser(User currentUser)
+	//
+	//Description:	updates user
+	/***************************************************************************************************************/
+	public void UpdateUser(User currentUser) {
 		currentUser.setUsername(usernameField.getText());
 		currentUser.setPassword(passwordField.getText());
 		currentUser.setDOB(dobField.getText());
