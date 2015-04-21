@@ -286,7 +286,7 @@ public class PatientProfilePanel extends JPanel {
 	{
 		int index = patHistoryList.getSelectedIndex();
 		ArrayList<Diagnosis> listOfDiagnoses = currentPatient.getDiagnoses();
-		
-		return listOfDiagnoses.get(index).toString();
+		String res = currentPatient.getDiagnosisReport(listOfDiagnoses.get(index));
+		return res;
 	}
 }
