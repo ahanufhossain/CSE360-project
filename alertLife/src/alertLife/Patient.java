@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class Patient extends User {
 
 	
-	private ArrayList<Diagnosis> diagnoses = new ArrayList<Diagnosis>();
+	private ArrayList<Diagnosis> diagnoses;
 	
 	/***********************Constructors******************************************/
 	//Methods: Patient(), and Patient(String uName, String pw, String initDOB, String initName) 
@@ -31,6 +31,7 @@ public class Patient extends User {
 		dateOfBirth = null;
 		name = null;
 		userType = "Patient";
+		diagnoses = new ArrayList<Diagnosis>();
 	}
 	public Patient(String uName, String pw, String initDOB, String initName)
 	{
@@ -39,6 +40,7 @@ public class Patient extends User {
 		dateOfBirth = initDOB;
 		name = initName;
 		userType = "Patient";
+		diagnoses = new ArrayList<Diagnosis>();
 	}	
 	
 	/***********************Constructors******************************************/

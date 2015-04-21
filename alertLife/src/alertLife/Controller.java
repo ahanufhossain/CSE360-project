@@ -47,6 +47,7 @@ public class Controller extends JFrame implements ActionListener
 	//TODO set current patient and doctor somewhere
 	Patient currentPatient;
 	Doctor currentDoctor;
+	Patient currentDoctorsPatient;
 	int indexOfCurrentUser; //needed to update the arraylist when users info is changed
 
 	//get user by username from listOfUsers
@@ -99,6 +100,8 @@ public class Controller extends JFrame implements ActionListener
 		{
 			patientPage.btnEditProfile.addActionListener(this);
 			patientPage.btnNewEntry.addActionListener(this);
+			if (currentUser instanceof Doctor)
+				patientPage.btnBack.addActionListener(this);
 		}
 		// RegistrationPanel
 		else if (panel instanceof RegistrationPanel)
@@ -324,8 +327,9 @@ public class Controller extends JFrame implements ActionListener
 		//there is no panel for this button at this time
 		if(e.getSource() == docPage.btnSeePatientDetails)
 		{
-			//TODO
-			//goToPatientProfilePanel();
+			String patientUsername = docPage.getPatientUsername();
+			currentDoctorsPatient = (Patient) getUser(patientUsername);
+			goToPatientProfilePanel();
 		}
 		//navigates from add patient page to doc page
 		if (e.getSource() == addPatientPage.btnBack)
@@ -379,6 +383,11 @@ public class Controller extends JFrame implements ActionListener
 		{
 			goNewEntry();
 		}
+		//navigates from patient page to doctor profile panel
+		if (e.getSource() == patientPage.btnBack)
+		{
+			goToDoctorProfilePanel();
+		}
 		//navigates from new entry back to patient page
 		if(e.getSource() == newEntryPage.btnBack)
 		{
@@ -412,10 +421,17 @@ public class Controller extends JFrame implements ActionListener
 	public void goToPatientProfilePanel()
 	{
 		frame.getContentPane().removeAll();
-		patientPage.patHistory = getPatHistoryList();
-		patientPage.repaint();		
-		//TODO
 		
+		if (currentUser instanceof Patient)
+		{
+			patientPage = new PatientProfilePanel(currentUser, (Patient)currentUser);
+		}
+		else
+		{
+			patientPage = new PatientProfilePanel(currentUser, currentDoctorsPatient);
+		}
+		addActionListeners(patientPage);
+		patientPage.repaint();
 		frame.getContentPane().add(patientPage);
 		frame.setVisible(true);
 		frame.repaint();
@@ -488,27 +504,6 @@ public class Controller extends JFrame implements ActionListener
 		frame.getContentPane().add(newEntryPage);
 		frame.setVisible(true);
 		frame.repaint();
-	}
-
-
-	
-	//returns the patient history as a string array
-	public String[] getPatHistoryList()
-	{
-		if (currentPatient.getDiagnoses().size() == 0)
-		{
-			return new String[] {"No diagnosis reported yet"};
-		}
-		else
-		{
-			ArrayList<String> patHistoryArrayList = new ArrayList<String>();
-			for (int i = 0; i < currentPatient.getDiagnoses().size(); i++)
-			{
-				patHistoryArrayList.add(currentPatient.getDiagnoses().get(i).toShortString());
-			}
-			
-			return patHistoryArrayList.toArray(new String[patHistoryArrayList.size()]);
-		}
 	}
 }
 

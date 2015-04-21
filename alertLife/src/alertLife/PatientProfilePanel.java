@@ -29,6 +29,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 import java.awt.Choice;
+import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
@@ -37,10 +38,12 @@ public class PatientProfilePanel extends JPanel {
 	//private static final long serialVersionUID = 1L;
 	JButton btnEditProfile;
 	JButton btnNewEntry;
-	String[] patHistory = new String[] {"History1", "History2", "History3", "History4", "History5", "History6", "History7", "History8", "History9", "History10", "History11", "History12"};
-	JButton patProfileBackButton;
+	private String[] patHistory = new String[] {"History1", "History2", "History3", "History4", "History5", "History6", "History7", "History8", "History9", "History10", "History11", "History12"};
+	JButton btnBack;
 	JTextPane diagnosisDisplayPane;
 	JList patHistoryList;
+	private Patient currentPatient;
+	private User currentUser;
 	
 	public PatientProfilePanel() {
 		setBackground(Color.LIGHT_GRAY);
@@ -124,12 +127,127 @@ public class PatientProfilePanel extends JPanel {
 		diagnosisDisplayPane.setBounds(230, 200, 200, 210);
 		add(diagnosisDisplayPane);
 		
-		patProfileBackButton = new JButton("Back");
-		patProfileBackButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		patProfileBackButton.setBounds(230, 421, 200, 40);
-		add(patProfileBackButton);
+		btnBack = new JButton("Back");
+		btnBack.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		btnBack.setBounds(230, 421, 200, 40);
+		add(btnBack);
+	}
 	
+	public PatientProfilePanel(User currentUser, Patient currentPatient) {
+		this.currentPatient = currentPatient;
+		this.currentUser = currentUser;
+		this.patHistory = getPatHistoryList();
+		setBackground(Color.LIGHT_GRAY);
+		setLayout(null);
 		
-
+		JLabel lblProfilePage = new JLabel("Profile Page");
+		lblProfilePage.setHorizontalAlignment(SwingConstants.CENTER);
+		lblProfilePage.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+		lblProfilePage.setBounds(0, 22, 450, 37);
+		add(lblProfilePage);
+		
+		JLabel lblName = new JLabel("Name: " + currentPatient.getName());
+		lblName.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		lblName.setBounds(79, 63, 120, 20);
+		add(lblName);
+		
+		JLabel lblDob = new JLabel("DOB: " + currentPatient.getDOB());
+		lblDob.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		lblDob.setBounds(79, 89, 120, 20);
+		add(lblDob);
+		
+		JLabel lblUsername = new JLabel("Username: " + currentPatient.getUsername());
+		lblUsername.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		lblUsername.setBounds(250, 63, 151, 20);
+		add(lblUsername);
+		
+		JLabel lblDoctor = new JLabel("Doctor: ");
+		lblDoctor.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		lblDoctor.setBounds(250, 89, 151, 20);
+		add(lblDoctor);
+		
+		btnEditProfile = new JButton("Edit Profile");
+		btnEditProfile.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		btnEditProfile.setBounds(75, 120, 300, 40);
+		add(btnEditProfile);
+		
+		JLabel lblHistory = new JLabel("History:");
+		lblHistory.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHistory.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		lblHistory.setBounds(20, 170, 180, 26);
+		add(lblHistory);
+		
+		JLabel lblSelectedEntry = new JLabel("Selected Entry:");
+		lblSelectedEntry.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelectedEntry.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		lblSelectedEntry.setBounds(250, 170, 180, 26);
+		add(lblSelectedEntry);
+		
+		JScrollPane patHistoryScrollPane = new JScrollPane();
+		patHistoryScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);		
+		patHistoryScrollPane.setBounds(20, 200, 200, 210);
+		patHistoryList = new JList(patHistory);
+		patHistoryList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		patHistoryList.setModel(new AbstractListModel()
+		{
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+			public int getSize()
+			{
+				return patHistory.length;
+			}
+			public Object getElementAt(int index)
+			{
+				return patHistory[index];
+			}
+			
+		});
+		patHistoryScrollPane.setViewportView(patHistoryList);
+		add(patHistoryScrollPane);
+		
+		diagnosisDisplayPane = new JTextPane();
+		diagnosisDisplayPane.setEditable(false);
+		diagnosisDisplayPane.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		diagnosisDisplayPane.setBounds(230, 200, 200, 210);
+		add(diagnosisDisplayPane);
+		
+		btnNewEntry = new JButton("New Entry");
+		btnNewEntry.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		
+		if (currentUser instanceof Doctor)
+		{
+			btnNewEntry.setBounds(20, 421, 200, 40);
+			
+			btnBack = new JButton("Back");
+			btnBack.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+			btnBack.setBounds(230, 421, 200, 40);
+			add(btnBack);
+		}
+		else
+		{
+			btnNewEntry.setBounds(125, 421, 200, 40);
+		}
+		add(btnNewEntry);
+	}
+	
+	//returns the patient history as a string array
+	public String[] getPatHistoryList()
+	{
+		if (currentPatient.getDiagnoses().size() == 0)
+		{
+			return new String[] {"No diagnosis reported yet"};
+		}
+		else
+		{
+			ArrayList<String> patHistoryArrayList = new ArrayList<String>();
+			for (int i = 0; i < currentPatient.getDiagnoses().size(); i++)
+			{
+				patHistoryArrayList.add(currentPatient.getDiagnoses().get(i).toShortString());
+			}
+			
+			return patHistoryArrayList.toArray(new String[patHistoryArrayList.size()]);
+		}
 	}
 }

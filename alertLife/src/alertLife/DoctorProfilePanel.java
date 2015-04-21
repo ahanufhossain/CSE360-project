@@ -38,8 +38,9 @@ public class DoctorProfilePanel extends JPanel {
 	JButton btnAddPatient;
 	JButton btnEditProfile;
 	JList<String> docsPatList;
-	private Doctor currentUser;
+	private Doctor currentDoctor;
 	JLabel lblDoctorNamesProfile;
+	private ArrayList<String> patientUsernames;
 	
 	// Display Example Doctor Profile Panel
 	public DoctorProfilePanel() {
@@ -92,7 +93,8 @@ public class DoctorProfilePanel extends JPanel {
 	{
 		setLayout(null);
 		
-		this.currentUser = currentDoctor;
+		this.currentDoctor = currentDoctor;
+		this.patientUsernames = new ArrayList<String>();
 		this.docPatNames = getDocPatNamesList();
 		
 		JScrollPane doscPatScrollPane = new JScrollPane();
@@ -111,7 +113,7 @@ public class DoctorProfilePanel extends JPanel {
 		doscPatScrollPane.setViewportView(docsPatList);
 		add(doscPatScrollPane);
 		
-		lblDoctorNamesProfile = new JLabel(currentUser.getName() + "'s Profile Page", SwingConstants.CENTER);
+		lblDoctorNamesProfile = new JLabel(currentDoctor.getName() + "'s Profile Page", SwingConstants.CENTER);
 		
 		lblDoctorNamesProfile.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		lblDoctorNamesProfile.setBounds(0, 27, 450, 39);
@@ -137,20 +139,33 @@ public class DoctorProfilePanel extends JPanel {
 		add(btnEditProfile);
 	}
 	
+	// return patient's username
+	public String getPatientUsername()
+	{
+		int index = docsPatList.getSelectedIndex();
+		return patientUsernames.get(index);
+	}
+	
+	// return patient's name
+	public String getPatientName()
+	{
+		return docsPatList.getSelectedValue();
+	}
+	
 	// returns the doctor's patents as a string array
 	private String[] getDocPatNamesList()
 	{
-		if (currentUser.getPatientList().size() == 0)
-		{
+		ArrayList<Patient> docPatList = currentDoctor.getPatientList();
+		if (docPatList.size() == 0)
 			return new String[] { "No Patients added yet" };
-		}
 		else
 		{
 			ArrayList<String> docPatArrayList = new ArrayList<String>();
 			
-			for (int i = 0; i < currentUser.getPatientList().size(); i++)
+			for (Patient patient : docPatList)
 			{
-				docPatArrayList.add(currentUser.getPatientList().get(i).getName());
+				docPatArrayList.add(patient.getName());
+				patientUsernames.add(patient.getUsername());
 			}
 			
 			return docPatArrayList.toArray(new String[docPatArrayList.size()]);
