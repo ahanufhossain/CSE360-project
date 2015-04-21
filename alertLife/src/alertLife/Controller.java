@@ -164,6 +164,22 @@ public class Controller extends JFrame implements ActionListener, MouseListener
 			//serializes each user individually
 			for(int i=0; i<listOfUsers.size();i++)
 			{
+				if(listOfUsers.get(i).userType.equals("Patient"))
+				{
+					Patient tempPat = (Patient) listOfUsers.get(i);
+					String filename = tempPat.username + "Diag";
+					FileOutputStream diagOut = new FileOutputStream(filename);
+					ObjectOutputStream diagStream = new ObjectOutputStream(diagOut);
+					
+					//serializes each diagnosis individually
+					for(int j=0; j<tempPat.diagnoses.size(); j++)
+					{
+						diagStream.writeObject(tempPat.diagnoses.get(j));
+					}
+					diagStream.close();
+					diagOut.close();
+				}
+				
 				outputStream.writeObject(listOfUsers.get(i));
 			}
 			
@@ -428,8 +444,8 @@ public class Controller extends JFrame implements ActionListener, MouseListener
 			//however, they are apparently not Serializable
 			//java.io.NotSerializableException gets thrown
 			
-			//updateAll();
-			//save();
+			updateAll();
+			save();
 			
 			goToPatientProfilePanel("");
 		}

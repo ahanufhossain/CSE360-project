@@ -13,10 +13,11 @@
 package alertLife;
 
 import java.util.Date;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-public class Diagnosis {
+public class Diagnosis implements Serializable{
 	
 	private int symptom1;
 	private int symptom2;
