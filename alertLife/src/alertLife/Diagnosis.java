@@ -94,10 +94,10 @@ public class Diagnosis {
 	{
 		return "Diagnosis:\t" + diagnosisName + "\n" +
 				"Pain:\t" + symptom1 + "\n" + 
-				"Nausea:\t" + symptom1 + "\n" + 
-				"Sleepiness:\t" + symptom1 + "\n" + 
-				"Fatigue:\t" + symptom1 + "\n" + 
-				"Dizziness:\t" + symptom1 + "\n" + 
+				"Nausea:\t" + symptom2 + "\n" + 
+				"Sleepiness:\t" + symptom3 + "\n" + 
+				"Fatigue:\t" + symptom4 + "\n" + 
+				"Dizziness:\t" + symptom5 + "\n" + 
 				dateTime;
 	}
 	
