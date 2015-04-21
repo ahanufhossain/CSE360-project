@@ -94,6 +94,7 @@ public class Doctor extends User implements Serializable {
 	
 	public ArrayList<Patient> getPatientList()
 	{
+		sortPatients();
 		return patients;
 	}
 	
