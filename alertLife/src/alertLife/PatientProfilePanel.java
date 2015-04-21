@@ -39,6 +39,7 @@ public class PatientProfilePanel extends JPanel {
 	private String[] patHistory = new String[] { "History1", "History2", "History3", "History4", "History5", "History6", "History7", "History8", "History9", "History10", "History11", "History12" }; //used for instantiation
 	JButton btnBack;
 	JTextPane diagnosisDisplayPane;
+	JScrollPane jsp;
 	JList patHistoryList;
 	private Patient currentPatient;
 
@@ -100,8 +101,7 @@ public class PatientProfilePanel extends JPanel {
 		add(btnNewEntry);
 
 		JScrollPane patHistoryScrollPane = new JScrollPane();
-		patHistoryScrollPane
-				.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		patHistoryScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		patHistoryScrollPane.setBounds(20, 200, 200, 210);
 		patHistoryList = new JList(patHistory);
 		patHistoryList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
@@ -122,8 +122,10 @@ public class PatientProfilePanel extends JPanel {
 		diagnosisDisplayPane = new JTextPane();
 		diagnosisDisplayPane.setEditable(false);
 		diagnosisDisplayPane.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		diagnosisDisplayPane.setBounds(230, 200, 200, 210);
-		add(diagnosisDisplayPane);
+		jsp = new JScrollPane(diagnosisDisplayPane);
+		jsp.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		jsp.setBounds(230, 200, 200, 210);
+		add(jsp);
 
 		btnBack = new JButton("Back");
 		btnBack.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
@@ -214,13 +216,15 @@ public class PatientProfilePanel extends JPanel {
 		});
 		patHistoryScrollPane.setViewportView(patHistoryList);
 		add(patHistoryScrollPane);
-
+		
 		diagnosisDisplayPane = new JTextPane();
 		diagnosisDisplayPane.setText(diagnosis);
 		diagnosisDisplayPane.setEditable(false);
 		diagnosisDisplayPane.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		diagnosisDisplayPane.setBounds(230, 200, 200, 210);
-		add(diagnosisDisplayPane);
+		jsp = new JScrollPane(diagnosisDisplayPane);
+		jsp.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		jsp.setBounds(230, 200, 200, 210);
+		add(jsp);
 
 		btnNewEntry = new JButton("New Entry");
 		btnNewEntry.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));

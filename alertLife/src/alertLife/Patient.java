@@ -107,12 +107,6 @@ public class Patient extends User implements Serializable {
 		String report;
 		report = "Severity: ";
 		report += determineSeverity() + "\n";
-		report += "Pain: ";
-		report += reported.getSymptom(1) + "\t\tNausea: "
-				+ reported.getSymptom(2) + "\tSleepiness: "
-				+ reported.getSymptom(3) + "\n";
-		report += "Fatgue: " + reported.getSymptom(4) + "\tDizziness: "
-				+ reported.getSymptom(5) + "\n";
 		report += "Pain: "; 
 		report += reported.getSymptom(1) + "\nNausea: " + reported.getSymptom(2) + "\nSleepiness: " + reported.getSymptom(3) + "\n";
 		report += "Fatgue: " + reported.getSymptom(4) + "\nDizziness: " + reported.getSymptom(5) + "\n";
