@@ -94,10 +94,11 @@ public class Controller extends JFrame implements ActionListener, MouseListener 
 		}
 		// PatientProfilePanel
 		else if (panel instanceof PatientProfilePanel) {
-			patientPage.btnEditProfile.addActionListener(this);
 			patientPage.btnNewEntry.addActionListener(this);
 			if (currentUser instanceof Doctor)
 				patientPage.btnBack.addActionListener(this);
+			else
+				patientPage.btnEditProfile.addActionListener(this);
 			patientPage.patHistoryList.addMouseListener(this);
 		}
 		// RegistrationPanel

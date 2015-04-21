@@ -176,11 +176,6 @@ public class PatientProfilePanel extends JPanel {
 		lblDoctor.setBounds(250, 89, 151, 20);
 		add(lblDoctor);
 
-		btnEditProfile = new JButton("Edit Profile");
-		btnEditProfile.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnEditProfile.setBounds(75, 120, 300, 40);
-		add(btnEditProfile);
-
 		JLabel lblHistory = new JLabel("History:");
 		lblHistory.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHistory.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
@@ -231,13 +226,18 @@ public class PatientProfilePanel extends JPanel {
 
 		if (currentUser instanceof Doctor) {
 			btnNewEntry.setBounds(20, 421, 200, 40);
-
+			
 			btnBack = new JButton("Back");
 			btnBack.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 			btnBack.setBounds(230, 421, 200, 40);
 			add(btnBack);
 		} else {
 			btnNewEntry.setBounds(125, 421, 200, 40);
+			
+			btnEditProfile = new JButton("Edit Profile");
+			btnEditProfile.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+			btnEditProfile.setBounds(75, 120, 300, 40);
+			add(btnEditProfile);
 		}
 		add(btnNewEntry);
 	}
