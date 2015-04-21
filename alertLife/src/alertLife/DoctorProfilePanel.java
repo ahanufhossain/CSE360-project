@@ -32,7 +32,8 @@ import java.util.ArrayList;
 
 public class DoctorProfilePanel extends JPanel {
 
-	String[] docPatNames = new String[] {"Paitent1", "Patient2", "Patient3", "Patient4", "Patient5", "Patient6", "Patient7", "Patient8"};
+	String[] docPatNames = new String[] { "Paitent1", "Patient2", "Patient3",
+			"Patient4", "Patient5", "Patient6", "Patient7", "Patient8" };
 	String doctorName = "Example Doctor Name";
 	JButton btnSeePatientDetails;
 	JButton btnAddPatient;
@@ -41,13 +42,14 @@ public class DoctorProfilePanel extends JPanel {
 	private Doctor currentDoctor;
 	JLabel lblDoctorNamesProfile;
 	private ArrayList<String> patientUsernames;
-	
+
 	// Display Example Doctor Profile Panel
 	public DoctorProfilePanel() {
 		setLayout(null);
-		
+
 		JScrollPane doscPatScrollPane = new JScrollPane();
-		doscPatScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		doscPatScrollPane
+				.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		doscPatScrollPane.setBounds(75, 77, 300, 230);
 		docsPatList = new JList(docPatNames);
 		docsPatList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
@@ -55,24 +57,26 @@ public class DoctorProfilePanel extends JPanel {
 			public int getSize() {
 				return docPatNames.length;
 			}
+
 			public Object getElementAt(int index) {
 				return docPatNames[index];
 			}
 		});
 		doscPatScrollPane.setViewportView(docsPatList);
 		add(doscPatScrollPane);
-		
-		lblDoctorNamesProfile = new JLabel(doctorName + "'s Profile Page", SwingConstants.CENTER);
-		
+
+		lblDoctorNamesProfile = new JLabel(doctorName + "'s Profile Page",
+				SwingConstants.CENTER);
+
 		lblDoctorNamesProfile.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		lblDoctorNamesProfile.setBounds(0, 27, 450, 39);
 		add(lblDoctorNamesProfile);
-		
+
 		btnSeePatientDetails = new JButton("See Patient Details");
 		btnSeePatientDetails.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnSeePatientDetails.setBounds(75, 318, 300, 40);
 		add(btnSeePatientDetails);
-		
+
 		btnAddPatient = new JButton("Add Patient");
 		btnAddPatient.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnAddPatient.addActionListener(new ActionListener() {
@@ -81,24 +85,24 @@ public class DoctorProfilePanel extends JPanel {
 		});
 		btnAddPatient.setBounds(75, 368, 300, 40);
 		add(btnAddPatient);
-		
+
 		btnEditProfile = new JButton("Edit Profile");
 		btnEditProfile.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnEditProfile.setBounds(75, 418, 300, 40);
 		add(btnEditProfile);
 	}
-	
+
 	// Create new doctor profile panel to display doctor's info
-	public DoctorProfilePanel(Doctor currentDoctor)
-	{
+	public DoctorProfilePanel(Doctor currentDoctor) {
 		setLayout(null);
-		
+
 		this.currentDoctor = currentDoctor;
 		this.patientUsernames = new ArrayList<String>();
 		this.docPatNames = getDocPatNamesList();
-		
+
 		JScrollPane doscPatScrollPane = new JScrollPane();
-		doscPatScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		doscPatScrollPane
+				.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		doscPatScrollPane.setBounds(75, 77, 300, 230);
 		docsPatList = new JList(docPatNames);
 		docsPatList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
@@ -106,24 +110,26 @@ public class DoctorProfilePanel extends JPanel {
 			public int getSize() {
 				return docPatNames.length;
 			}
+
 			public Object getElementAt(int index) {
 				return docPatNames[index];
 			}
 		});
 		doscPatScrollPane.setViewportView(docsPatList);
 		add(doscPatScrollPane);
-		
-		lblDoctorNamesProfile = new JLabel(currentDoctor.getName() + "'s Profile Page", SwingConstants.CENTER);
-		
+
+		lblDoctorNamesProfile = new JLabel(currentDoctor.getName()
+				+ "'s Profile Page", SwingConstants.CENTER);
+
 		lblDoctorNamesProfile.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		lblDoctorNamesProfile.setBounds(0, 27, 450, 39);
 		add(lblDoctorNamesProfile);
-		
+
 		btnSeePatientDetails = new JButton("See Patient Details");
 		btnSeePatientDetails.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnSeePatientDetails.setBounds(75, 318, 300, 40);
 		add(btnSeePatientDetails);
-		
+
 		btnAddPatient = new JButton("Add Patient");
 		btnAddPatient.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnAddPatient.addActionListener(new ActionListener() {
@@ -132,42 +138,37 @@ public class DoctorProfilePanel extends JPanel {
 		});
 		btnAddPatient.setBounds(75, 368, 300, 40);
 		add(btnAddPatient);
-		
+
 		btnEditProfile = new JButton("Edit Profile");
 		btnEditProfile.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btnEditProfile.setBounds(75, 418, 300, 40);
 		add(btnEditProfile);
 	}
-	
+
 	// return patient's username
-	public String getPatientUsername()
-	{
+	public String getPatientUsername() {
 		int index = docsPatList.getSelectedIndex();
 		return patientUsernames.get(index);
 	}
-	
+
 	// return patient's name
-	public String getPatientName()
-	{
+	public String getPatientName() {
 		return docsPatList.getSelectedValue();
 	}
-	
+
 	// returns the doctor's patents as a string array
-	private String[] getDocPatNamesList()
-	{
+	private String[] getDocPatNamesList() {
 		ArrayList<Patient> docPatList = currentDoctor.getPatientList();
 		if (docPatList.size() == 0)
 			return new String[] { "No Patients added yet" };
-		else
-		{
+		else {
 			ArrayList<String> docPatArrayList = new ArrayList<String>();
-			
-			for (Patient patient : docPatList)
-			{
+
+			for (Patient patient : docPatList) {
 				docPatArrayList.add(patient.getName());
 				patientUsernames.add(patient.getUsername());
 			}
-			
+
 			return docPatArrayList.toArray(new String[docPatArrayList.size()]);
 		}
 	}

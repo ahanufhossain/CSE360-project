@@ -256,6 +256,13 @@ public class PatientProfilePanel extends JPanel {
 		return res;
 	}
 	
+	// returns true if it has one or more diagnoses
+	// returns false otherwise
+	public boolean hasDiagnosis()
+	{
+		return (currentPatient.getDiagnoses().size() > 0);
+	}
+	
 	//returns the patient history as a string array
 	public String[] getPatHistoryList()
 	{
@@ -277,12 +284,9 @@ public class PatientProfilePanel extends JPanel {
 	
 	public String getDiagnosis()
 	{
-		String res = "";
-		
 		int index = patHistoryList.getSelectedIndex();
 		ArrayList<Diagnosis> listOfDiagnoses = currentPatient.getDiagnoses();
 		
-		res = listOfDiagnoses.get(index).toString();
-		return res;
+		return listOfDiagnoses.get(index).toString();
 	}
 }

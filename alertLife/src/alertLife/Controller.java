@@ -406,14 +406,26 @@ public class Controller extends JFrame implements ActionListener, MouseListener
 		{
 			//TODO
 			//Diagnosis(int symp1, int symp2, int symp3, int symp4, int symp5, String com, String dName)
+			String comments = "";
+			
+			if (!newEntryPage.enterComments.getText().equals("Enter Additional Information..."))
+				comments = newEntryPage.enterComments.getText();
+			
 			currentPatient.addDiagnosis(new Diagnosis(newEntryPage.pSlider.getValue(),
 														newEntryPage.nSlider.getValue(), 
 														newEntryPage.sSlider.getValue(), 
 														newEntryPage.fSlider.getValue(), 
 														newEntryPage.dSlider.getValue(),
-														newEntryPage.enterComments.getText(),
+														comments,
 														newEntryPage.diagnosesComboBox.getSelectedItem().toString())
 														);
+			
+			//TODO: updateAll() and save() need to be run
+			//however, they are apparently not Serializable
+			//java.io.NotSerializableException gets thrown
+			
+			//updateAll();
+			//save();
 			
 			goToPatientProfilePanel("");
 		}
@@ -508,17 +520,20 @@ public class Controller extends JFrame implements ActionListener, MouseListener
 		frame.repaint();
 	}
 	
+	// handles diagnosis display pane
 	public void mouseClicked(MouseEvent e)
 	{
 		String diagnosis = "";
-		if (e.getSource() == patientPage.patHistoryList)
+		if (e.getSource() == patientPage.patHistoryList && patientPage.hasDiagnosis())
 		{
 			diagnosis = patientPage.getDiagnosis();
-			// display new patientpage
 			goToPatientProfilePanel(diagnosis);
 		}
 	}
 	
+	//These are never being used, but warnings get thrown
+	//if they aren't implemented. So they're "implemented"
+	//but they're doing nothing.
 	public void mousePressed(MouseEvent e) {}
 	public void mouseReleased(MouseEvent e) {}
 	public void mouseEntered(MouseEvent e) {}
