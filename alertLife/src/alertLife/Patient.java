@@ -113,6 +113,9 @@ public class Patient extends User implements Serializable {
 				+ reported.getSymptom(3) + "\n";
 		report += "Fatgue: " + reported.getSymptom(4) + "\tDizziness: "
 				+ reported.getSymptom(5) + "\n";
+		report += "Pain: "; 
+		report += reported.getSymptom(1) + "\nNausea: " + reported.getSymptom(2) + "\nSleepiness: " + reported.getSymptom(3) + "\n";
+		report += "Fatgue: " + reported.getSymptom(4) + "\nDizziness: " + reported.getSymptom(5) + "\n";
 		report += "Comment: " + reported.getComment() + "\n";
 
 		return report;
