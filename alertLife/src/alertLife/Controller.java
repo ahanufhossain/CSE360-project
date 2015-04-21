@@ -99,7 +99,8 @@ public class Controller extends JFrame implements ActionListener
 	//writes the arrayList of users to a file
 	public void save()
 	{
-		try{
+		try
+		{
 			FileOutputStream fileOut = new FileOutputStream("allUsers");
 			ObjectOutputStream outputStream = new ObjectOutputStream(fileOut);
 			
@@ -112,10 +113,12 @@ public class Controller extends JFrame implements ActionListener
             outputStream.close();
             fileOut.close();
         }
-		catch (FileNotFoundException ex) {
+		catch (FileNotFoundException ex)
+		{
             ex.printStackTrace();
         } 
-		catch (IOException ex) {
+		catch (IOException ex)
+		{
             ex.printStackTrace();
 		}
 	}
