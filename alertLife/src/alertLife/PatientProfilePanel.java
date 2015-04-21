@@ -132,7 +132,7 @@ public class PatientProfilePanel extends JPanel {
 		add(btnBack);
 	}
 	
-	public PatientProfilePanel(User currentUser, Patient currentPatient, ArrayList<User> userlist) {
+	public PatientProfilePanel(User currentUser, Patient currentPatient, ArrayList<User> userlist, String diagnosis) {
 		this.currentPatient = currentPatient;
 		this.patHistory = getPatHistoryList();
 		
@@ -210,6 +210,7 @@ public class PatientProfilePanel extends JPanel {
 		add(patHistoryScrollPane);
 		
 		diagnosisDisplayPane = new JTextPane();
+		diagnosisDisplayPane.setText(diagnosis);
 		diagnosisDisplayPane.setEditable(false);
 		diagnosisDisplayPane.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		diagnosisDisplayPane.setBounds(230, 200, 200, 210);
@@ -272,5 +273,16 @@ public class PatientProfilePanel extends JPanel {
 			
 			return patHistoryArrayList.toArray(new String[patHistoryArrayList.size()]);
 		}
+	}
+	
+	public String getDiagnosis()
+	{
+		String res = "";
+		
+		int index = patHistoryList.getSelectedIndex();
+		ArrayList<Diagnosis> listOfDiagnoses = currentPatient.getDiagnoses();
+		
+		res = listOfDiagnoses.get(index).toString();
+		return res;
 	}
 }

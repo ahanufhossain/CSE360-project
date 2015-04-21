@@ -16,6 +16,8 @@ package alertLife;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -31,7 +33,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 
 
-public class Controller extends JFrame implements ActionListener
+public class Controller extends JFrame implements ActionListener, MouseListener
 {
 	LoginScreenPanel login;
 	DoctorProfilePanel docPage;
@@ -101,6 +103,7 @@ public class Controller extends JFrame implements ActionListener
 			patientPage.btnNewEntry.addActionListener(this);
 			if (currentUser instanceof Doctor)
 				patientPage.btnBack.addActionListener(this);
+			patientPage.patHistoryList.addMouseListener(this);
 		}
 		// RegistrationPanel
 		else if (panel instanceof RegistrationPanel)
@@ -261,7 +264,7 @@ public class Controller extends JFrame implements ActionListener
 				}
 				else
 				{
-					goToPatientProfilePanel();
+					goToPatientProfilePanel("");
 				}
 			}
 		}
@@ -328,7 +331,7 @@ public class Controller extends JFrame implements ActionListener
 		{
 			String patientUsername = docPage.getPatientUsername();
 			currentDoctorsPatient = (Patient) getUser(patientUsername);
-			goToPatientProfilePanel();
+			goToPatientProfilePanel("");
 		}
 		//navigates from add patient page to doc page
 		if (e.getSource() == addPatientPage.btnBack)
@@ -358,7 +361,7 @@ public class Controller extends JFrame implements ActionListener
 			}
 			else
 			{
-				goToPatientProfilePanel();
+				goToPatientProfilePanel("");
 			}
 		}
 		//navigates from edit profile back to doc page
@@ -371,7 +374,7 @@ public class Controller extends JFrame implements ActionListener
 			}
 			else
 			{
-				goToPatientProfilePanel();
+				goToPatientProfilePanel("");
 			}
 		}
 		//navigates from patient page to edit profile page
@@ -392,7 +395,7 @@ public class Controller extends JFrame implements ActionListener
 		//navigates from new entry back to patient page
 		if(e.getSource() == newEntryPage.btnBack)
 		{
-			goToPatientProfilePanel();
+			goToPatientProfilePanel("");
 		}
 		
 		//save the diagnosis entry
@@ -412,24 +415,24 @@ public class Controller extends JFrame implements ActionListener
 														newEntryPage.diagnosesComboBox.getSelectedItem().toString())
 														);
 			
-			goToPatientProfilePanel();
+			goToPatientProfilePanel("");
 		}
 		
 	}
 	
 	//updates all of the variables on the patient page
 	//goes to patient profile
-	public void goToPatientProfilePanel()
+	public void goToPatientProfilePanel(String diagnosis)
 	{
 		frame.getContentPane().removeAll();
 		
 		if (currentUser instanceof Patient)
 		{
-			patientPage = new PatientProfilePanel(currentUser, (Patient)currentUser, listOfUsers);
+			patientPage = new PatientProfilePanel(currentUser, (Patient)currentUser, listOfUsers, diagnosis);
 		}
 		else
 		{
-			patientPage = new PatientProfilePanel(currentUser, currentDoctorsPatient, listOfUsers);
+			patientPage = new PatientProfilePanel(currentUser, currentDoctorsPatient, listOfUsers, diagnosis);
 		}
 		addActionListeners(patientPage);
 		patientPage.repaint();
@@ -504,6 +507,22 @@ public class Controller extends JFrame implements ActionListener
 		frame.setVisible(true);
 		frame.repaint();
 	}
+	
+	public void mouseClicked(MouseEvent e)
+	{
+		String diagnosis = "";
+		if (e.getSource() == patientPage.patHistoryList)
+		{
+			diagnosis = patientPage.getDiagnosis();
+			// display new patientpage
+			goToPatientProfilePanel(diagnosis);
+		}
+	}
+	
+	public void mousePressed(MouseEvent e) {}
+	public void mouseReleased(MouseEvent e) {}
+	public void mouseEntered(MouseEvent e) {}
+	public void mouseExited(MouseEvent e) {}
 }
 
 
