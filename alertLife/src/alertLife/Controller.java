@@ -355,6 +355,10 @@ public class Controller extends JFrame implements ActionListener, MouseListener
 		//or patient page depending on user type
 		if(e.getSource() == editProfile.saveButton)
 		{
+			editProfile.UpdateUser(currentUser);
+			updateAll();
+			save();
+			
 			if(currentUser.userType.equals("Doctor"))
 			{
 				goToDoctorProfilePanel();
@@ -503,6 +507,8 @@ public class Controller extends JFrame implements ActionListener, MouseListener
 	//goes to add edit profile page
 	public void goToEditProfile()
 	{
+		editProfile = new EditProfilePanel(currentUser);
+		addActionListeners(editProfile);
 		frame.getContentPane().removeAll();
 		frame.getContentPane().add(editProfile);
 		frame.setVisible(true);
