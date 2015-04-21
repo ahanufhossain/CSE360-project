@@ -54,7 +54,7 @@ public class addPatientPanel extends JPanel {
 		JScrollPane allPatScrollPane = new JScrollPane();
 		allPatScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		allPatScrollPane.setBounds(75, 90, 300, 268);
-		JList allPatList = new JList(allPatNames);
+		allPatList = new JList(allPatNames);
 		allPatList.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		allPatList.setModel(new AbstractListModel() {
 			public int getSize() {
