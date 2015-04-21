@@ -343,6 +343,7 @@ public class Controller extends JFrame implements ActionListener
 			// add patient to current doctor's data set
 			String patientUsername = addPatientPage.getPatientUsername();
 			currentDoctor.addPatient((Patient) getUser(patientUsername));
+			save();
 			
 			// go to doctor profile panel
 			goToDoctorProfilePanel();
