@@ -28,6 +28,7 @@ import java.util.Arrays;
 
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JPanel;
 
 
 public class Controller extends JFrame implements ActionListener
@@ -48,6 +49,58 @@ public class Controller extends JFrame implements ActionListener
 	Doctor currentDoctor;
 	int indexOfCurrentUser; //needed to update the arraylist when users info is changed
 
+	public void addDocPageListeners()
+	{
+		docPage.btnEditProfile.addActionListener(this);
+		docPage.btnAddPatient.addActionListener(this);
+		docPage.btnSeePatientDetails.addActionListener(this);
+	}
+	
+	public void addActionListeners(JPanel panel)
+	{
+		// addPatientPanel
+		if (panel instanceof addPatientPanel)
+		{
+			addPatientPage.btnBack.addActionListener(this);
+		}
+		// DoctorProfilePanel
+		else if (panel instanceof DoctorProfilePanel)
+		{
+			docPage.btnEditProfile.addActionListener(this);
+			docPage.btnAddPatient.addActionListener(this);
+			docPage.btnSeePatientDetails.addActionListener(this);
+		}
+		// EditProfilePanel
+		else if (panel instanceof EditProfilePanel)
+		{
+			editProfile.saveButton.addActionListener(this);
+			editProfile.cancelButton.addActionListener(this);
+		}
+		// LoginScreenPanel
+		else if (panel instanceof LoginScreenPanel)
+		{
+			login.btnLogin.addActionListener(this);
+			login.btnRegister.addActionListener(this);
+		}
+		// NewEntryPanel
+		else if (panel instanceof NewEntryPanel)
+		{
+			newEntryPage.btnBack.addActionListener(this);
+			newEntryPage.btnSaveEntry.addActionListener(this);
+		}
+		// PatientProfilePanel
+		else if (panel instanceof PatientProfilePanel)
+		{
+			patientPage.btnEditProfile.addActionListener(this);
+			patientPage.btnNewEntry.addActionListener(this);
+		}
+		// RegistrationPanel
+		else if (panel instanceof RegistrationPanel)
+		{
+			registerPage.btnRegister.addActionListener(this);
+			registerPage.btnBack.addActionListener(this);
+		}
+	}
 	
 	public void init()
 	{
@@ -360,6 +413,7 @@ public class Controller extends JFrame implements ActionListener
 	{
 		frame.getContentPane().removeAll();
 		docPage = new DoctorProfilePanel(currentDoctor);
+		addActionListeners(docPage);
 		docPage.repaint();
 		//TODO
 		frame.getContentPane().add(docPage);
