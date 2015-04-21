@@ -119,9 +119,7 @@ public class Doctor extends User implements Serializable {
 	public Patient getPatient(String pName) {
 		Patient temp = new Patient();
 		for (int i = 0; i < patients.size(); i++) {
-
 			if (patients.get(i).getName() == pName) {
-
 				temp = patients.get(i);
 				i = 9001;
 			}

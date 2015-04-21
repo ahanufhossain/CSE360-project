@@ -166,8 +166,7 @@ public class addPatientPanel extends JPanel {
 					patientUsernames.add(user.getUsername());
 				}
 			}
-
-			return allPatNamesArrayList.toArray(new String[allPatNamesArrayList.size()]);
+		return allPatNamesArrayList.toArray(new String[allPatNamesArrayList.size()]);
 		}
 	}
 }
