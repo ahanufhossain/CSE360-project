@@ -157,12 +157,12 @@ public class PatientProfilePanel extends JPanel {
 
 		JLabel lblName = new JLabel("Name: " + currentPatient.getName());
 		lblName.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblName.setBounds(79, 63, 120, 20);
+		lblName.setBounds(79, 63, 151, 20);
 		add(lblName);
 
 		JLabel lblDob = new JLabel("DOB: " + currentPatient.getDOB());
 		lblDob.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		lblDob.setBounds(79, 89, 120, 20);
+		lblDob.setBounds(79, 89, 151, 20);
 		add(lblDob);
 
 		JLabel lblUsername = new JLabel("Username: "
