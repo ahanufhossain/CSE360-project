@@ -258,6 +258,27 @@ public class Controller extends JFrame implements ActionListener, MouseListener 
 		}
 		return flag;
 	}
+	
+	/***************************************************************************************************************
+	//Function:		hasUser(String username)
+	//
+	//Description:	checks if there is a user with the chosen username 
+	/***************************************************************************************************************/
+	public boolean hasUser(String username)
+	{
+		boolean res = false;
+		if (username.length() > 0)
+			if (listOfUsers.size() > 0)
+				for (User user : listOfUsers)
+				{
+					if (user.getUsername().equals(username))
+					{
+						res = true;
+						break;
+					}
+				}
+		return res;
+	}
 
 	/***************************************************************************************************************
 	//Function:		
@@ -297,7 +318,7 @@ public class Controller extends JFrame implements ActionListener, MouseListener 
 
 			// checks none of the fields are blank
 			if (username.equals("") || password.equals("") || name.equals("")
-					|| dob.equals("")) {
+					|| dob.equals("") || hasUser(username)) {
 				// set label to say please fill in all information
 			} else {
 				// if doctor radio button selected creates new doctor
@@ -502,6 +523,8 @@ public class Controller extends JFrame implements ActionListener, MouseListener 
 	//Description:	goes to register page
 	/***************************************************************************************************************/
 	public void goToRegister() {
+		registerPage = new RegistrationPanel();
+		addActionListeners(registerPage);
 		frame.getContentPane().removeAll();
 		frame.getContentPane().add(registerPage);
 		frame.setVisible(true);
