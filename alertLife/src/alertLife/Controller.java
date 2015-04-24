@@ -313,9 +313,8 @@ public class Controller extends JFrame implements ActionListener, MouseListener 
 					listOfUsers.add(patient);
 				}
 				save();
+				goToLogin();
 			}
-
-			goToLogin();
 		}
 		// goes back to login page
 		if (e.getSource() == registerPage.btnBack) {
