@@ -404,16 +404,24 @@ public class Controller extends JFrame implements ActionListener, MouseListener 
 					"Enter Additional Information..."))
 				comments = newEntryPage.enterComments.getText();
 
-			currentPatient.addDiagnosis(new Diagnosis(newEntryPage.pSlider
+			if (currentUser instanceof Patient)
+			{
+				currentPatient.addDiagnosis(new Diagnosis(newEntryPage.pSlider
 					.getValue(), newEntryPage.nSlider.getValue(),
 					newEntryPage.sSlider.getValue(), newEntryPage.fSlider
 					.getValue(), newEntryPage.dSlider.getValue(),
 					comments, newEntryPage.diagnosesComboBox.getSelectedItem()
 					.toString()));
-
-			// TODO: updateAll() and save() need to be run
-			// however, they are apparently not Serializable
-			// java.io.NotSerializableException gets thrown
+			}
+			else 
+			{
+				currentDoctorsPatient.addDiagnosis(new Diagnosis(newEntryPage.pSlider
+						.getValue(), newEntryPage.nSlider.getValue(),
+						newEntryPage.sSlider.getValue(), newEntryPage.fSlider
+						.getValue(), newEntryPage.dSlider.getValue(),
+						comments, newEntryPage.diagnosesComboBox.getSelectedItem()
+						.toString()));
+			}
 
 			updateAll();
 			save();
