@@ -85,9 +85,14 @@ public class Doctor extends User implements Serializable {
 	//Description:	adds a patient to the doctors patients list
 	/***************************************************************************************************************/
 	public void addPatient(Patient newPatient) {
-		if (patients.add(newPatient) && AlertLife.debugModeOn == 1)
-			;
-		System.out.println("Patient has been added to the current list.");
+		// check for patient
+		String username = newPatient.getUsername();
+		if (!hasPatient(username))
+		{
+			if (patients.add(newPatient) && AlertLife.debugModeOn == 1)
+				;
+			System.out.println("Patient has been added to the current list.");
+		}
 	}
 
 	/***************************************************************************************************************
@@ -127,5 +132,21 @@ public class Doctor extends User implements Serializable {
 		if (temp.getName() != pName) // if not found
 			System.out.println("Patient not found");
 		return temp;
+	}
+	/***************************************************************************************************************
+	//Function:		hasPatient(String username)
+	//
+	//Description:	searches for patient name in doctor's patient list and returns whether patient is found
+	/***************************************************************************************************************/
+	private boolean hasPatient(String username)
+	{
+		boolean res = false;
+		for (Patient patient : patients)
+			if (patient.getUsername().equals(username))
+			{
+				res = true;
+				break;
+			}
+		return res;
 	}
 }
