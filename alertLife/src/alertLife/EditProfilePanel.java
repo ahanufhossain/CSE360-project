@@ -181,9 +181,13 @@ public class EditProfilePanel extends JPanel {
 	//Description:	updates user
 	/***************************************************************************************************************/
 	public void UpdateUser(User currentUser) {
-		currentUser.setUsername(usernameField.getText());
-		currentUser.setPassword(passwordField.getText());
-		currentUser.setDOB(dobField.getText());
-		currentUser.setName(nameField.getText());
+		if (usernameField.getText().length() > 0)
+			currentUser.setUsername(usernameField.getText());
+		if (passwordField.getText().length() > 0)
+			currentUser.setPassword(passwordField.getText());
+		if (dobField.getText().length() > 0)
+			currentUser.setDOB(dobField.getText());
+		if (nameField.getText().length() > 0)
+			currentUser.setName(nameField.getText());
 	}
 }
